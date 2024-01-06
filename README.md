@@ -1,1 +1,3 @@
 # Lab-Reports-PHYS418
+
+These lab reports were written for PHYS 418 Advanced Laboratory in Fall '23, which I got an A in. We did 5 labs overall. 3 of these labs were 'intermediate labs' and took 3 lab periods ("Calculation...", "Determination...", and "Meaurement..."). 2 of the labs were 'advanced labs' and took 5 lab periods ("Examining...", "Test..."). The class emphasizes science communication in general, as besides the 5 lab reports, we also gave 2 10 minutes presentations.
