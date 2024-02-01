@@ -1,0 +1,226 @@
+\documentclass[11pt,letterpaper]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %%                                   %%
+\setlength{\evensidemargin}{0in}  %%                                   %%
+\setlength{\textheight}{8.5in}    %%                                   %%
+\setlength{\topmargin}{0in}       %%                                   %%
+\setlength{\headheight}{0in}      %%                                   %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+%\bibliographystyle{plain}                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%PUT YOUR MACROS HERE
+%\usepackage{multirow}
+\usepackage{amsmath}
+%\usepackage{calligra}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{fancyhdr}
+%\usepackage{longtable}
+%\usepackage{vmargin}
+%\usepackage{slashed}
+\usepackage{graphicx}
+%\usepackage{psfrag}
+%\usepackage{euscript}
+%\usepackage{slashbox}
+\usepackage{ulem}
+%\usepackage{wrapfig}
+%\usepackage{natbib}
+%\usepackage{floatfig}
+%\usepackage{subfigure}
+%\usepackage{palatino}
+%\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{gensymb}
+
+% These are user defined functions that make parentheses, brackets, etc. easier to type.
+
+
+\def\bra#1{{\left\langle#1\right\vert}}
+\def\prn#1{{\left(#1\right)}}
+\def\ket#1{{\left\vert#1\right\rangle}}
+\def\abs#1{{\left|#1\right|}}
+\def\brk#1{{\left[#1\right]}}
+
+\newcommand{\req}[1]{\section*{\hfil #1\hfil}}                    \renewcommand{\refname}{\hfil References Cited\hfil}
+
+\graphicspath{ {./images/} }
+
+\begin{document}
+
+\title{Examining the Temperature Dependence of the Resistivity of Platinum from $290$ K to $10$ K}
+
+\author{Colvin Iorio}
+
+\date{December 17, 2023}
+\maketitle
+
+
+\begin{abstract}
+    We use a cryostat to vary the temperature of a platinum sample to measure resistance of the sample at different temperatures. We used a four-probe measurement technique to eliminate contact resistance as a factor in our measurement. Values for the resistance of our sample are recorded for the temperature range of $290$ K to $10$ K. Following the Bloch-Grüneisen relation, we find values of $a = 1.13273(3)$ and $b = 1332(3)$, compared to predicted values of $a = 1$ and $b = 497.6$. We examine potential sources for the discrepancy between our experimentally determined values and values predicted by the model.
+\end{abstract}
+
+
+\section{Introduction}\label{sec intro}
+
+Temperature is one of the most important parameters that can be varied in lab to gain an understanding of the properties of a material. In our experiment, we gain experience using a cryostat by cooling a platinum sample to $10$ K and examining the temperature dependence of the sample's resistivity.
+
+Cryogenics is defined as the science of the production and effects of very low temperatures, typically dealing with temperatures below approximately $120$ K \cite{Radebaugh}. Although humans have long used heat as a way to alter materials, due to the relative difficulty of extreme cooling, it was not until the past 150 years that serious advancements in cryogenics were made. Oxygen, hydrogen, and helium were not cooled to liquid form for the first times until 1877, 1898, and 1908 respectively \cite{Radebaugh2}. The 1908 production of $100$ mL of helium by the Dutch physicist Kamerlingh Onnes won him the 1913 Nobel Prize. With the ability to reach temperatures of $2$ K, Onnes furthermore discovered superconductivity in high-purity mercury in 1911.
+
+To this day, cryogenics maintains its importance across many subfields of physics. One of the most well-known examples of the uses of cryogenics is superconductivity, in which the resistance of a material decreases to zero and all magnetic fields are completely expelled below a critical temperature \cite{Ganni}. Superconductors are used in many important technologies, such as low-loss power transmission systems, magnetic resonance imaging (MRIs), and particle accelerators. Cryogenics is also of extreme importance to quantum computing. Cooling techniques are instrumental in preserving qubit coherence and reducing noise in quantum computers \cite{Dargan}. At extreme cold, quantum particles exhibit unique behaviors enabling long-lasting coherence and entanglement, which are the building blocks of quantum computing, quantum sensing, and quantum communication.
+
+In this lab report, we review the theory behind heat capacity, the Debye temperature, and the Bloch-Grüneisen relation. We then go over our experimental procedure, as well as the physics behind ballast resistors, four-probe measurement techniques, diffusion vacuum pumps, and cryostats. Finally, we use our data to calculate values for $a$ and $b$, parameters that emerge from the Bloch-Grüneisen relation, and discuss error to determine whether or not the relation is an appropriate model for our data.
+
+\section{Theory}
+
+\subsection{Heat Capacity of Solids and Debye Temperature} \label{subsection}
+
+Following Ref. \cite{Wert}, the total energy of a solid consists of two parts, the thermal energy and any other energy existing at absolute zero. Together these are called the internal energy $E$. $E$ is a function of temperature, and the temperature derivative of $E$ at a constant volume is called the heat capacity,
+\begin{equation}
+    C = {\partial E \over \partial T} .
+\end{equation}
+The heat capacity of solids is not constant with temperature. The calculation of heat capacity is extremely complicated, as it requires the sum of the kinetic and potential energies of every oscillating atom in the solid of interest to be known. 
+
+The Debye theory is one of the most successful approximations for this calculation. From this theory comes the Debye temperature, $\theta_D$, which is defined with the expression
+\begin{equation}
+    \theta_D = {h \nu_D \over k} ,
+\end{equation}
+where $h$ is Planck's constant, $k$ is Boltzmann's constant, and $\nu_D$ is the characteristic maximum vibration frequency of the atom. Thus, $\theta_D$ has a different value for each solid. Generally at $T=\theta_D$, the heat capacity reaches about 96 percent of its maximum value.
+
+The significance of the Debye temperature is that it is an approximate dividing point between the high-temperature region where oscillators in the solid behave in a classical way and the low-temperature region where quantum effects are important. Excitation of oscillating atoms is relatively difficult at low temperatures, and thus only discrete energy levels are allowed, separated by a factor $h\nu$. The raising of the energy of an oscillator from one level to the net is infrequent because the levels are far apart compared to available thermal energy. Therefore, few oscillators are excited, and both the heat capacity and internal energy are low. On the other hand, at high temperatures (or temperatures above $\theta_D$), the spacing between levels is small compared with the thermal energy, and excitation takes place more frequently.
+
+\subsection{The Bloch-Grüneisen Relation and Resistance Dependence on Temperature}
+
+Following Ref. \cite{Ashcroft}, a source of resistivity in materials is the thermal vibrations of ions about their equilibrium positions. Lattice vibrations can be considered as processes in which an electron absorbs or emits a phonon, changing its energy by the phonon energy. A simple way to view the contribution of lattices to the resistivity of metals is through the assumption that scattering is dominated by electrons emitting or absorbing a phonon. At high temperatures, the number of phonons is directly proportional to T,
+\begin{equation}
+    \rho \sim T, \hspace{10mm} T \gg \Theta_D . \label{phonons high temp}
+\end{equation}
+Thus, resistivity also scales also scales linearly with T.
+
+At low temperatures ($T \ll \Theta_D$), this picture becomes much more complicated. As stated at the end of Subsection \ref{subsection}, only oscillators with certain energy levels are able to be absorbed or emitted by electrons. The number of phonons meeting such a requirement declines proportionally to $T^3$. Furthermore, due to fewer phonons, the effects of scattering are different, and a further $T^2$ dependence must be introduced. Combining these two dependencies, we have
+\begin{equation}
+    \rho \sim T^5, \hspace{10mm} T \ll \Theta_D. \label{phonons low temp}
+\end{equation}
+
+The Bloch-Grüneisen relation is an approximate solution to the electron-phonon scattering contribution to the resistivity of a material. Now following Ref. \cite{Thomas}, we can introduce reduced variables, where 
+\begin{equation}
+    t = {T \over \theta_D} \label{reducedT}
+\end{equation}
+and
+\begin{equation}
+    r = {R - R_0 \over R_D - R_0} , \label{reducedR}
+\end{equation}
+where $R$, $R_D$, and $R_0$ are the resistance of a given sample at temperature $T$, $\theta_D$, and zero.
+
+The Bloch-Grüneisen relation predicts $r$ as a way to represent the relative phonon contribution to the resistance of the material. It can be written as
+\begin{equation}
+    r = t^5 {\int_0^{1 \over t} ( {z^5 dz \over (e^z - 1)(1 - e^{-z})}) \over \int_0^1 ( {z^5 dz \over (e^z - 1)(1 - e^{-z})})} . \label{yikes}
+\end{equation}
+This equation can thankfully be reduced. Similarly to Eqs. \ref{phonons high temp} and \ref{phonons low temp}, we can say that
+\begin{equation}
+    r = at, \hspace{10mm} t > {1 \over 2}
+\end{equation}
+and
+\begin{equation}
+    r = bt^5, \hspace{10mm} t < 0.1 .
+\end{equation}
+For all metals and sample sizes, $a$ is equal to exactly one and $b$ is equal to $497.6$, as a result of the computation of the integral in Eq. \ref{yikes}.
+
+
+\section{Experimental Procedures}
+
+\begin{figure}
+\centerline{\includegraphics[width=4.5in]{Cryogenics Block Diagram.png}}
+\caption{A block diagram of our experimental setup. Our DC power supply was adjusted until the toolkit DMM read 10.0(1) mA. This current ran through the platinum sample, located inside the coldhead of our cryostat module. Used to cool the cryostat were the portable diffusion pump, compressor module, and cold water supplied by the building's plumbing. To measure the voltage drop across our sample, we used a four-probe resistance measurement method with our autoaveraging $\mu$V DMM. The autoaveraging DMM and the temperature controlling both recorded data to the lab computer for every $0.5$ K change as we changed the sample's temperature between $290$ K and $10$ K. The figure was made by Cassidy Spencer.} \label{Block diagram}
+\end{figure}
+
+A block diagram of the circuit we used to send current through our sample and measure the voltage drop across our sample can be seen in Fig. \ref{Block diagram}. The DC power supply was turned on and adjusted until the toolkit DMM read $10.0(1)$ mA. The error in this value was determined by our observations of the current drifting over the course of taking measurements, which was likely due to a drift in the power supply's voltage output. Between the power supply and multimeter was a $1000$ $\ohm$ ballast resistor. The ballast resistor is in series with the resistor of interest, our platinum sample, to prevent any changes in current through the circuit as the resistance of the sample changes with temperature. Given that the current is equal to $V / (R_B + R)$, if we choose a ballast resistor with resistance $R_B \gg R$, then changes in $R$ of our sample are insignificant in the determination of our current \cite{Scofield}. 
+
+We used an autoranging $\mu$V DMM to make our measurement of the voltage drop across the platinum sample. We had to use a four-probe resistance measurement method to do this, because contact resistance from connecting leads from a voltmeter to the sample is a source of resistance we do not want \cite{Scofield}. If we call the contact resistances $R_1$ and $R_2$, then the measured voltage drop would be $I(R + R_1 + R_2$). This is a problem especially when $R$ is very very small. To work around this, we can use a four-probe resistance measurement, a diagram of which can be seen in Fig. \ref{4 probe}. Effectively, the contact resistances $R_1$ and $R_4$ are part of the ballast resistor. If the voltmeter has significant enough input impedance, then no current flows through the voltage contacts $R_3$ and $R_4$. This, the measured voltage drop is fully dependent on $R$ and none of the four contact resistances.
+
+\begin{figure}
+\centerline{\includegraphics[width=4.5in]{4-probe measurement.png}}
+\caption{A diagram of a circuit representing a 4-probe resistance measurement. $R_B$ is the ballast resistor. $R_B \gg R$, so that changes in $R$, our sample's resistance due to temperature variations do not influence the current. $R_1$, $R_2$, $R_3$, and $R_4$ are the four contact points from the digital multimeter. $R_1$ and $R_2$ are effectively added to $R_B$. $R_3$ and $R_4$ serve to prevent any current from passing through the digital multimeter by helping the voltmeter have effectively infinite input impedance in comparison to our sample. Thus, all the current passes through our sample $R$, and we can be sure that contact resistance is not affecting our values. Figure taken from Ref. \cite{Scofield}.} \label{4 probe}
+\end{figure}
+
+Our cryostat was a closed-cycle helium cryostat. The cold head of the cryostat contains displacers (pistons) that push the helium gas and change the volumes of two stages \cite{Jirmanus}. The cold head is attached via flexible high-pressure tubes to a compressor. The compressor has a heat exchanger, which uses cooled water to dissipate heat generated when helium gas is compressed, and regenerators. Regenerators are materials with poor thermal conductivity, high specific heat, and a large surface area that allows them to absorb heat from incoming warm helium gas and give it up to colder exiting helium gas.
+
+The typical cryostat cycle has four repeating steps \cite{Jirmanus}. First, an inlet valve connecting the high-pressure helium gas from the compressor to the cold head is opened. Second, the displacers are pushed down, expanding the volume in the cold head and drawing in more helium, which gives up some of its heat to the regenerators. Third, the inlet valve is closed and the exhaust valve to a low-pressure line is opened, allowing the helium gas to cool as it expands into the low-pressure line. This cools the two stages of the cold head and the regenerator. Finally, the displacer is pushed up, driving cold helium gas through the exhaust line to the compressor. The exiting gas gives up its heat to the regenerator and is warmed to slightly below room temperature and the incoming helium gas temperature. The regenerators are left at a lower temperature than before the process began, enabling them to pre-cool the incoming gas at the start of the next cycle.
+
+Before the cryostat could be cooled and data could be taken, the vacuum jacket of the cryostat had to be evacuated with our portable diffusion pump system. This isolates our cold head from the room temperature surroundings, which prevents convection from affecting our system in unwanted ways. We evacuated the vacuum jacket with our portable diffusion pump station.
+
+In a diffusion pump, gas molecules are moved from inlet to outlet via momentum transfer from directed streams of oil vapor \cite{Moore}. The oil is evaporated in a boiler at the bottom of the pump. The resulting vapor is directed up the pump to an array of nozzles, which emits the vapor back downwards and outwards towards the pump walls. Air molecules from the chamber being pumped randomly enter the pump, and are directed down and out via collisions with the vapor. The walls of the pump are cooled with cold water so that walls condense the oil vapor at the top of the pump. At the bottom of the pump, warmer walls drive absorbed gas out of the oil condensate. The air molecules then exit the pump through the foreline exhaust.
+
+To prevent stalling of the diffusion pump where oil contaminates the chamber, a mechanical backing pump was required as part of our diffusion pump station, which lowers the foreline pressure of the diffusion pump. Mechanical pumps have an off-centered rotor turning inside, which splits the interior of the pump into two volumes that compress and expand opposite one another \cite{Moore}. Gas from the pump inlet enters one of these volumes and is then compressed and forced through a valve to the exhaust.
+
+The box digital multimeter read our the voltage drop across our platinum sample, which was recorded on a computer. Using Ohm's Law $R = {\Delta V \over I}$, the computer recorded data as temperature versus resistance. A value was recorded for every $0.5$ K change in the temperature. If multiple values for resistance were recorded at the same temperature, they were averaged by the computer program. We cooled the cryostat from $290$ K to $10$ K. We then partially heated the sample to $80$ K before  letting the cryostat cool the sample back down to $10$ K, a process which we repeated multiple times. Finally, we let the cryostat warm back up to $290$ K.
+
+
+\section{Discussion of Results}
+
+\begin{figure}
+\centerline{\includegraphics[width=5.5in]{aFit.png}}
+\caption{Plot of the reduced variable $r$ versus reduced temperature $t$, with a linear unweighted fit in blue. Only data points satisfying $t > 0.5$ were used in this fit. The fit gave us a value of $a = 1.273(3)$. We also calculated the relative error for each point using the residuals as the error. The highest relative error was $0.9\%$, which we used in our weighted fit for low-temperature data (in Fig. \ref{bFit}). The residuals of this figure are not random, which is likely due to current drift stemming from a drift in our power supply.} \label{aFit}
+\end{figure}
+
+\begin{figure}
+\centerline{\includegraphics[width=5.5in]{bFit.png}}
+\caption{Plot of the reduced variable $r$ versus reduced temperature $t$, with a weighted fit of the form $y = a + bx^5$ for points where $t < 0.1$. Error for each point was calculated assuming all points had $0.9\%$ error, which was the largest relative error of any point of our unweighted linear fit in Fig. \ref{aFit}. We found a value of $b = 1332(3)$ and $\chi^2 = 9775$. Data points from $0.05 < t < 0.08$ all have slightly positive residuals, while data points where $t > 0.09$ fall significantly from the fit estimations. This combined with the frighteningly high $\chi^2$ suggest the model was not appropriate for our data.} \label{bFit}
+\end{figure}
+
+To analyze our data, we converted the values for $R$ and $T$ to $r$ and $t$ using Eqs. \ref{reducedR} and \ref{reducedT} respectively. Then, following Eq. \ref{phonons high temp}, we did a linear unweighted fit for all points $t > 0.5$. This fit can be seen in Fig. \ref{aFit}. This fit gave us a value of $a = 1.1273(3)$, comparable to the expected value of $a = 1$. Although the error on our experimentally determined value means that our obtained value is over 424 standard deviations away from expected, Ref. \cite{Thomas} states that the Bloch-Grüniesen equation is known to be different from the real curve by $10-15\%$ at the high-temperature limit. Thus, our value for $a$ is reasonable despite the error.
+
+Examining Fig. \ref{aFit}, we see that the residuals are not random. This is likely because of the current drift in our system due to the DC power supply drift. As we cooled, we witnessed the current displayed on the toolkit DMM change from $10.07$ mA at $290$ K to $9.96$ mA at $220$ K. It largely stayed at this value, as we observed $I = 9.97$ mA at $15$ K.
+
+Before we could look at finding $b$, we needed a way to estimate the error in each point from our data collection. To do this, we took the point on this unweighted linear fit with the largest residual and calculated that point's relative error using the residual as the error. The value we found was $0.9\%$. This relative error was then applied to every data point we had in order to obtain error values and do a weighted fit. We decided this was a reasonable assumption because when we examined our data, our values for $r$ at low $t$ had a lot of noise. Therefore, we wanted a value for relative error on the higher side to extrapolate.
+
+To find $b$, we followed Eq. \ref{phonons low temp} and fit a weighted 5th-order polynomial to our data where $t < 0.1$. This fit can be seen in Fig. \ref{bFit}. With this fit, we got a value of $b = 1332(3)$, and $\chi^2 = 9775$. Our value of b is over 278 standard deviations off from our expected value of $b = 497.6$, and our $\chi^2$ is, simply put, ridiculous. Overall, the fit does not look like it appropriately fits the data. From looking at both the residuals and the fit over the data itself, data from $0.05 < t < 0.08$ is consistently greater than the fit, and when $t > 0.09$ the data is consistently below the fit (although the point at $t = 0.10$ appears to be in line with the fit, data beyond that shows that this point is higher because of noise and therefore erroneously appears in line with our fit). 
+
+There are many possible reasons for this, one of which is that we determined error in a largely arbitrary way. We determined error in the way we did because our data at low $t$ (namely when $t < 0.3$) had lots of noise. This was likely caused by latency in the data collection program, as we heated from $10$ K to about $80$ K and then let the cryostat cool the sample back to $10$ K multiple times as we were taking data. Because of this noise, we wanted to estimate a rather high relative uncertainty. However, after doing the weighted fit and getting such a high value for $\chi^2$, it seems unlikely that the estimate was high enough. We did a second weighted fit where we raised the relative uncertainty to $5\%$, which gave us $b = 1330(20)$ and $\chi^2 = 317$. This $\chi^2$ is still much too high for only 28 data points. Thus, we must look at why the model itself is not accurate to our data.
+
+
+Our best idea for why our data does not fit the model is that we did not measure the resistance at a low enough temperature. Ref. \cite{Thomas} contains student results for this lab where four student groups achieved values for $b$ of $516.5$, $628.2$, $594.6$, and $638.2$. Though no error estimate is provided, these student groups cooled their platinum sample to $2$ K. Ref \cite{Thomas} also emphasizes the importance of accuracy in measurements as well as very precise measurements of temperature due to sample impurities having a significant effect on resistance at these low temperatures. We had many issues that could have affected our precision and accuracy, from our current drifting to our latency issues with recording values to the computer to not cooling lower than $10$ K.
+
+\section{Conclusions}
+
+In conclusion, in this lab we examined the temperature dependence of the resistivity of a platinum sample. We used a closed-cycle helium cryostat with a vacuum jacket that we evacuated using a portable diffusion pump station. We also used a 4-prong resistance measurement method to prevent contact resistance from affecting the measured values of the sample's resistance. We took measurements at every $0.5$ K as the temperature dropped from $290$ K to $10$ K and was heated back up again. We found values for $a$ and $b$, parameters that emerge from the Bloch-Grüneisen relation, of $1.1273(3)$ and $1332(3)$ respectively. Due to the nature of the Bloch-Grüneisen relation, our value for $a$ compared well with the predicted value of $1$, but our value for $b$ was further off from the predicted value of $b = 497.6$. We determined many possible reasons for this, such as the somewhat arbitrary way we determined error, our measurements stopping at $10$ K, and strange sample behavior due to impurities at low temperatures. If repeated, these problems might be mitigated with more accurate cryostat temperature control to eliminate latency and better technology to make more accurate measurements of the drop in voltage across our sample. Overall, this lab introduced us to many key physics laboratory techniques, such as cryostat control, the use of vacuum pumps, and four-probe resistance measurement methods, that will serve us well as we continue our education and start careers in the field of physics.
+
+\section{References}
+
+\begin{thebibliography}{99}
+\bibitem{Radebaugh} Radebaugh, R., (2002), Cryogenics, in \textit{The MacMillan Encyclopedia Of Chemistry} accessed online through \url{https://trc.nist.gov/cryogenics/aboutCryogenics.html}.
+
+\bibitem{Radebaugh2} Radebaugh, R., (2007), Historical Summary of Cryogenic Activity Prior to 1950, in \textit{Cryogenic Engineering: Fifty Years of Progress}, accessed online through \url{https://trc.nist.gov/cryogenics/Papers/Review/2007-Historical_Summary_of_Cryogenics.pdf}.
+
+\bibitem{Ganni} Ganni, V., and Fesmire, J., 2012, ``Cryogenics for superconductors: Refrigeration, delivery, and preservation of the cold," AIP Conf. Proc. 1434, 15–27, \url{https://doi.org/10.1063/1.4706901}.
+
+\bibitem{Dargan} Dargan, K., (2023), \textit{Cryogenics: A Short History And The Implications It Has On The QC Industry}, The Quantum Insider, \url{https://thequantuminsider.com/2023/09/12/cryogenics-a-short-history-the-implications-it-has-on-the-qc-industry/}.
+
+\bibitem{Wert} Wert, C. A., and Thomson, R. M., \textit{Physics of Solids}, (McGraw-Hill, New York, 1964), section 3.3.
+
+\bibitem{Ashcroft} Ashcroft, N. W., and Mermin, N. D., \textit{Solid State Physics} (Holt, Rinchart and Winston, New York, 1976), chapter 26, pgs. 523-527.
+
+\bibitem{Thomas} Thomas, J. F., and Deltour, R., 1980, ``Temperature dependence of the platinum resistivity: An experiment for students in solid state and cryophysics," Am. J. Phys 49(3), 276-279, \url{https://doi.org/10.1119/1.12633}.
+
+\bibitem{Scofield} Advanced Laboratory Four-Probe Resistance Primer, PHYS 418 Laboratory, Oberlin College, Fall 2023, Prof. Jason Stalnaker, originally written by Prof. John Scofield in 1996.
+
+\bibitem{Jirmanus} Jirmanus, M. N., n.d., ``Introduction to Laboratory Cryogenics," Janis Research Company Inc., accessed online through \url{https://mmrc.caltech.edu/Stark/manuals/Intro%20to%20Cryogenics.pdf}. 
+
+\bibitem{Moore} Moore, John H., Davis, Christopher C., and Coplan, Michael A., \textit{Building Scientific Apparatus}, 4th edition, (2009, Cambridge University Press, United Kingdom), chapter 3.
+
+
+\bibitem{Cryogenics} Cryogenics, PHYS 418 Laboratory Physics, Oberlin College, Fall 2023, Prof. Jason Stalnaker.
+
+\end{thebibliography}
+
+\end{document} 

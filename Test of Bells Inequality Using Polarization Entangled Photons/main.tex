@@ -1,0 +1,368 @@
+\documentclass[11pt,letterpaper]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %%                                   %%
+\setlength{\evensidemargin}{0in}  %%                                   %%
+\setlength{\textheight}{8.5in}    %%                                   %%
+\setlength{\topmargin}{0in}       %%                                   %%
+\setlength{\headheight}{0in}      %%                                   %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+%\bibliographystyle{plain}                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%PUT YOUR MACROS HERE
+%\usepackage{multirow}
+\usepackage{amsmath}
+%\usepackage{calligra}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{fancyhdr}
+%\usepackage{longtable}
+%\usepackage{vmargin}
+%\usepackage{slashed}
+\usepackage{graphicx}
+%\usepackage{psfrag}
+%\usepackage{euscript}
+%\usepackage{slashbox}
+\usepackage{ulem}
+%\usepackage{wrapfig}
+%\usepackage{natbib}
+%\usepackage{floatfig}
+%\usepackage{subfigure}
+%\usepackage{palatino}
+%\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{gensymb}
+
+% These are user defined functions that make parentheses, brackets, etc. easier to type.
+
+
+\def\bra#1{{\left\langle#1\right\vert}}
+\def\prn#1{{\left(#1\right)}}
+\def\ket#1{{\left\vert#1\right\rangle}}
+\def\abs#1{{\left|#1\right|}}
+\def\brk#1{{\left[#1\right]}}
+
+\newcommand{\req}[1]{\section*{\hfil #1\hfil}}                    \renewcommand{\refname}{\hfil References Cited\hfil}
+
+\graphicspath{ {./images/} }
+
+\begin{document}
+
+\title{Test of Bell's Inequality Using Polarization-Entangled Photons}
+
+\author{Colvin Iorio}
+
+\date{November 30, 2023}
+\maketitle
+
+
+\begin{abstract}
+    We use polarization-entangled photon pairs to test Bell's inequality. Entangled photons are produced via downconversion in Beta Barium Borate crystals and are then incident on single photon detectors. We count the number of coincidence detections with various polarizer settings and calculate a value of $S = 1.72(7)$, which does not disagree with the derived Bell's inequality $-2 \le S \le 2$ and is far from our expected value $S=2\sqrt{2}$ [Dehlinger and Mitchell, American Journal of Physics \textbf{70}, 903 (2002)]. Thus, we ourselves did not prove quantum mechanics nor disprove any hidden local variable theory. We discuss possible sources of error for this inconclusive result.
+\end{abstract}
+
+
+\section{Introduction}\label{sec intro}
+
+Quantum mechanics is a fundamental theory of physics, describing the behavior of atomic and subatomic particles. It often departs in logic from more commonly understood classical mechanics, used to understand the world at a macroscopic level. One of the more striking examples of quantum mechanics not following classical mechanics logic is the collapse of an entangled state upon its measurement. In this lab, we attempt to demonstrate the non-locality of entanglement by creating a polarization-entangled state of two particles and making measurements of both particles' polarization.
+
+In 1935, Einstein, Podolsky, and Rosen published their EPR paradox, which was intended to show that that the realist position of quantum mechanics was the only viable quantum mechanics position \cite{Griffiths}. The realist position is that particles have defined properties from the moment they are created and quantum mechanics simply does not know about it, as opposed to the orthodox view that wave functions collapse when measured. In the EPR paradox, Einstein, Podolsky, and Rosen imagined two entangled particles separated by some distance. If the first particle were measured, previously unknown information about the second particle would instantaneously become known. If the particle really were in a superposition of multiple states, the instantaneous collapse would happen faster than the speed of light could carry information about the measurement of the first particle to the second particles. Einstein, Podolsky, and Rosen thus concluded that this orthodox view of quantum mechanics was untenable, and that the theory of quantum mechanics was incomplete.
+
+A number of hidden variable theories were proposed over the years that followed until 1964, when J. S. Bell proved that all local hidden variable theories are incompatible with quantum mechanics \cite{Griffiths}. Experimental tests following Bell's theory have all agreed with the orthodox view. This spelled the end for the realist position of quantum mechanics and any hidden variable theories.
+
+In this lab report, we review the key theory about Bell's inequality and the production of entangled protons. Following this, we explain our experimental procedure to produce and measure polarization-entangled photon pairs. Finally, we discuss our results and perform error analysis.
+
+\section{Theory}
+
+\subsection{Bell's Inequality} \label{Bells ineq}
+
+Rather than follow Bell's 1964 proof, I will follow section 12.2 in Chapter 12 of Griffiths \cite{Griffiths}, a more accessible explanation of Bell's Theorem to an undergraduate physicist yet to take a quantum mechanics course. 
+
+Bell suggested a generalization of the EPR thought experiment, where two particle detectors rotate independently and measure the spin component of entangled particles in the direction of unit vectors \textbf{a} and \textbf{b}. Bell proposed calculating the average of the product of spins for a given set of detector orientations, which we will call $P(\textbf{a}, \textbf{b})$. We will also state that each detector registers a value of $+1$ for spin up or $-1$ for spin down along their respective directions. If the detectors are parallel ($\textbf{b} = \textbf{a}$), the product is always -1, and hence the average is also
+\begin{equation}
+    P(\textbf{a}, \textbf{a}) = -1 .
+\end{equation}
+By the same logic, if they are anti-parallel ($\textbf{b} = -\textbf{a}$), then every product is $+1$ and
+\begin{equation}
+    P(\textbf{a}, \textbf{a}) = +1 .
+\end{equation}
+For arbitrary orientations, quantum mechanics predicts
+\begin{equation}
+    P(\textbf{a}, \textbf{a}) = -\textbf{a} \times \textbf{b} .
+\end{equation}
+Bell proved that this result is incompatible with any local hidden variable theory.
+
+To prove this, suppose that the complete state of the entangled particle system is characterized by a hidden variable (or multiple hidden variables, represented by a single variable) $\lambda$. Furthermore, suppose that the outcome of the measurement of one particle is independent of the orientation of the other particle's detector. Then, there would exist two functions, $A(\textbf{a}, \lambda)$ and $B(\textbf{b}, \lambda)$, that give the result of their respective measurements and can only take on the values $\pm 1$.
+
+When the detectors are aligned, the results are perfectly anti-correlated:
+\begin{equation}
+    A(\textbf{a}, \lambda) = -B(\textbf{a}, \lambda) , \label{A is -B}
+\end{equation}
+for all $\lambda$. The average of the product of these two measurements is
+\begin{equation}
+    P(\textbf{a}, \textbf{b}) = \int \rho (\lambda)  A(\textbf{a}, \lambda) B(\textbf{b}, \lambda) d\lambda ,
+\end{equation}
+where $\rho (\lambda)$ is the probability density of the hidden variable and thus is non-negative and satisfies the normalization condition. We can eliminate $B$ from this equation given Eq. \ref{A is -B}, giving
+\begin{equation}
+    P(\textbf{a}, \textbf{b}) = -\int \rho (\lambda)  A(\textbf{a}, \lambda) A(\textbf{b}, \lambda) d\lambda ,
+\end{equation}
+
+We can define a third unit vector $\textbf{c}$ and say
+\begin{align}
+    P(\textbf{a}, \textbf{b}) - P(\textbf{a}, \textbf{c}) = & -\int \rho (\lambda) [A(\textbf{a}, \lambda) A(\textbf{b}, \lambda) - A(\textbf{a}, \lambda) A(\textbf{c}, \lambda)] d\lambda \\
+    = & -\int \rho (\lambda) [1 - A(\textbf{b}, \lambda) A(\textbf{c}, \lambda)] A(\textbf{a}, \lambda) A(\textbf{b}, \lambda) d\lambda . \label{complex shit}
+\end{align}
+The right hand side of this equation can be split into two parts. First,
+\begin{equation}
+    -1 \le [A(\textbf{a}, \lambda) A(\textbf{b}, \lambda)] \le 1 .
+\end{equation}
+Second,
+\begin{equation}
+    \rho(\lambda) [1 - A(\textbf{b}, \lambda) A(\textbf{c}, \lambda)] \ge 0 .
+\end{equation}
+Taking these two inequalities and reexamining Eq. \ref{complex shit}, we have
+\begin{equation}
+    |P(\textbf{a}, \textbf{b}) - P(\textbf{a}, \textbf{c})| \le \int \rho(\lambda) [1 - A(\textbf{b}, \lambda) A(\textbf{c}, \lambda)] d\lambda ,
+\end{equation}
+which can be simplified to
+\begin{equation}
+    |P(\textbf{a}, \textbf{b}) - P(\textbf{a}, \textbf{c})| \le 1 + P(\textbf{b}, \textbf{c}) .
+\end{equation}
+This is Bell's inequality, and it holds for all local hidden variable theories, subject only to the requirements that $-1$ or $+1$ are measured and the results are perfectly anti-correlated when aligned.
+
+From here, we can show that quantum mechanical predictions are incompatible with this inequality. If we suppose all three vectors $\textbf{a}$, $\textbf{b}$, and $\textbf{c}$ lie in a plane and vector $\textbf{c}$ makes a $45\degree$ angle with both other vectors, quantum mechanics says
+\begin{equation}
+    P(\textbf{a}, \textbf{b}) = 0
+\end{equation}
+\begin{equation}
+    P(\textbf{a}, \textbf{c}) = P(\textbf{b}, \textbf{c}) = -0.707 .
+\end{equation}
+This is inconsistent with Bell's inequality, as
+\begin{equation}
+    0.707 \nleq 1 - 0.707 = 0.293 .
+\end{equation}
+
+As a result of Bell's inequality, the EPR paradox took on further meaning. If Einstein, Podolsky, and Rosen were right, then quantum mechanics was not just incomplete but was in fact wrong. On the other hand, if quantum mechanics were right, then no hidden variable theory can be as well. Of course, experiments done since the publishing of this paper have confirmed quantum mechanics and demonstrated non-locality.
+
+
+\subsection{Downconversion of a photon in a crystal}
+
+
+In many non-linear optical materials the index of refraction depends on the direction of the electric field vector \cite{Betchart}. Birefringent materials, such as the Beta Barium Borate (BBO) crystals we use in our experiment, are characterized by two indices of refraction, one for ordinary rays and one for purely extraordinary rays. An ordinary ray is a ray with polarization orthogonal to the optic axis, while a purely extraordinary ray has polarization parallel with the optic axis. An ordinary ray is subject to the ordinary index of refraction $n_o$, while a purely extraordinary ray is subject to the the extraordinary index of refraction $\Bar{n}_e$. Rays with polarization in the plane of the optic axis propagate according to an effective index of refraction $n_e$, given by
+\begin{equation}
+    {1 \over n_e(\theta)^2} = {\sin^2\theta \over \Bar{n}_e^2} + {\cos^2\theta \over n_o^2} . \label{index refrax}
+\end{equation}
+
+Spontaneous parametric downconversion occurs when a pump photon interacting with a non-linear medium splits into a signal and idler photon (signal and idler are names chosen for historical reasons). Following the derivation in Ref. \cite{Betchart}, these photons are subjected to energy and momentum conservation conditions
+\begin{equation}
+    \omega_s + \omega_i = \omega_p ,
+\end{equation}
+and
+\begin{equation}
+    \textbf{k}_s +\textbf{k}_i = \textbf{k}_p , \label{wave vector eq}
+\end{equation}
+where the subscripts $s$, $i$, and $p$ correspond to the signal, idler, and pump photons, and $\omega$ and $\textbf{k}$ are the angular frequency and wave vector. The signal and idler photons exit the medium at angles $\alpha$ and $\beta$ respectively.
+
+We can find phase matching angles $\alpha$ and $\beta$ by using $|\textbf{k}| = \omega n / c$ and the approximation $n_o(\omega_s) \approx n_o({1 \over 2} \omega_p) \approx n_o(\omega_i)$ to rewrite Eq. \ref{wave vector eq} into two parts, as 
+\begin{equation}
+    \omega_s \sin \alpha + \omega_i \sin \beta = 0
+\end{equation}
+and
+\begin{equation}
+    \omega_s \cos \alpha + \omega_i \cos \beta = {\omega_p n_e(\omega_p,\theta) \over n_o({1 \over 2} \omega_p)} . \label{cos wave vector equation}
+\end{equation}
+For the case where $\omega_s = \omega_i = {1 \over 2}\omega_p$, it must be true that $\alpha = -\beta$. We can substitute into our rewritten Eq. \ref{cos wave vector equation} to get
+\begin{equation}
+    {1 \over n_e(\omega_p,\theta)} = {\sec \alpha \over n_o({1 \over 2} \omega_p)} .
+\end{equation}
+This result can be combined with Eq. \ref{index refrax} to get
+\begin{equation}
+    {\sec^2 \theta \over n_o({1 \over 2}\omega_p)^2} = {\sin^2 \theta \over \Bar{n}_e(\omega_p)^2} + {\cos^2 \alpha \over n_o(\omega_p)^2} , \label{get angle eq}
+\end{equation}
+which can be solved explicitly given the index of refraction.
+
+We are given the indices of refraction for our Beta Baruym Borate (BBO) crystal in Ref. \cite{Lab manual}, which are
+\begin{equation}
+    n_o(\lambda)^2 = 2.7359 + {0.01878 \over \lambda^2 - 0.01822} - 0.01354\lambda^2
+\end{equation}
+\begin{equation}
+    \Bar{n}_e(\lambda)^2 = 2.3753 + {0.01224 \over \lambda^2 - 0.01667} - 0.01515\lambda^2 .
+\end{equation}
+Ref. \cite{Lab manual} also gives us our pump laser wavelength of $407$ nm, and states that our crystal is cut at an angle of $\theta = 30 \degree$. Plugging these in, Eq. \ref{get angle eq} gives a value of $\alpha = 3.2116 \degree$. Thus, the signal and idler photons are emitted $3.2116 \degree$ on either side of the laser beam's path.
+
+Our BBO crystals are cut for type I phase-matching, meaning the signal and idler photons emerge with the same polarization, orthogonal to the pump photon \cite{Dehlinger}. We use two of these crystals, one rotated $90\degree$ from the other, so that either pump polarization can downconvert according to the rules
+\begin{equation}
+    |V\rangle_p = |H\rangle_s|H\rangle_i
+\end{equation}
+\begin{equation}
+    |H\rangle_p = \mathrm{e}^{i\Delta} |V\rangle_s |V\rangle_i .
+\end{equation}
+
+
+\subsection{Specific Use of Bell's Inequality in our Experiment} \label{our bell ineq}
+
+Following Ref. \cite{Dehlinger} and based on the above rules for downconversion, we consider quantum mechanical system consisting of two photons (the signal and idler) in the polarization state
+\begin{equation}
+    |\psi_{EPR} \rangle = {1 \over \sqrt{2}} (|V_\alpha \rangle_s |V_\alpha \rangle_i + |H_\alpha \rangle_s |H_\alpha \rangle_i ) ,
+\end{equation}
+where $|V_\alpha \rangle$ describes a state with polarization rotated by angle $\alpha$ from the vertical, while $|H_\alpha \rangle$ is $\alpha$ from the horizontal. In this situation, if we measure this basis, we obtain $|V_\alpha \rangle$ half the time and $|H_\alpha \rangle$ the other half of the time. We can measure the signal polarization and infer the idler polarization. This is the situation described in the EPR paradox, only using polarization instead of spin as described in Subsec. \ref{Bells ineq}. We can continue with this scenario to find an inequality for this case.
+
+
+Our BBO crystal are cut so that the wave function of the signal and idler photon pair that emerges is given by
+\begin{equation}
+    |\psi_{DC}\rangle = \cos \theta_p |H\rangle_s |H\rangle_i + \mathrm{e}^{i\phi} \sin \theta_p |V\rangle_s |V\rangle_i ,
+\end{equation}
+where $\phi = \Delta + \phi_p$ is the total phase difference between horizontal and vertical polarization components.
+
+By placing polarizers rotated to angles $\alpha$ and $\beta$ in the signal and idler paths respectively, we measure the downconverted photons' polarization. For a photon pair produced in the state $|\psi_{DC}\rangle$, the probability of coincidence detection is
+\begin{equation}
+    P_{VV}(\alpha, \beta) = |\langle V_\alpha |_s \langle V_\beta |_i|\psi_{DC}\rangle|^2 .
+\end{equation}
+Here, the $VV$ subscript indicates the measurement outcome $V_\alpha V_\beta$ in the bases of their respective polarizers. For any angles $\alpha$ and $\beta$, there are four possible outcomes: $V_\alpha V_\beta$ (subscripted as $VV$), $V_\alpha H_\beta$ ($VH$), $H_\alpha V_\beta$ ($HV$), and $H_\alpha H_\beta$ ($HH$). A special case for $P$ occurs when $|\psi_{DC} \rangle = |\psi_{EPR} \rangle$,
+\begin{equation}
+    P_{VV}(\alpha, \beta) = {1 \over 2} \cos ^2 (\beta - \alpha) , \label{prob coinc}
+\end{equation}
+which depends only on the relative angle $\beta - \alpha$.
+
+Our use of Bell's inequality relies on two measures of correlation. The first is
+\begin{equation}
+    E(\alpha, \beta) \equiv P_{VV}(\alpha, \beta) + P_{HH}(\alpha, \beta) - P_{VH}(\alpha, \beta) -P_{HV}(\alpha, \beta) . \label{E eq}
+\end{equation}
+$E$ incorporates all of the measurement outcomes, and varies from $+1$ when they all agree to $-1$ when they all agree. $E$ can also be written as
+\begin{equation}
+    E(\alpha, \beta) = {N(\alpha, \beta) + N(\alpha, \beta) - N(\alpha, \beta) - N(\alpha, \beta) \over N(\alpha, \beta) + N(\alpha, \beta) + N(\alpha, \beta) + N(\alpha, \beta) }, \label{E with counts}
+\end{equation}
+where $N$ is the number of counts taken at the given polarizer settings. The second measure required is
+\begin{equation}
+    S \equiv E(a, b) - E(a, b') + E(a', b) + E(a', b') , \label{S eq}
+\end{equation}
+where $a$, $a'$, $b$, and $b'$ are four different polarizer angles, and $S$ has no physical meaning.
+
+Where our derivation departs from the derivation in Sec. \ref{Bells ineq} is that our outcomes are specified by the functions $A(\alpha, \lambda)$ and $B(\beta, \lambda)$ and thus are dependent on measurement angles $\alpha$ and $\beta$ respectively, as opposed to unit vectors. These functions take on values of $+1$ for detection as $V$ and $-1$ for detection as $H$. Now, the probability of find $V_\alpha V_\beta$, $V_\alpha H_\beta$, $H_\alpha V_\beta$, and $H_\alpha H_\beta$ are given by the integrals
+\begin{equation}
+    P_{VV}(\alpha, \beta) = \int {1 + A(\alpha, \lambda) \over 2} {1 + B(\beta, \lambda) \over 2}\rho(\lambda)d\lambda
+\end{equation}
+\begin{equation}
+    P_{VH}(\alpha, \beta) = \int {1 + A(\alpha, \lambda) \over 2} {1 - B(\beta, \lambda) \over 2}\rho(\lambda)d\lambda
+\end{equation}
+\begin{equation}
+    P_{HV}(\alpha, \beta) = \int {1 - A(\alpha, \lambda) \over 2} {1 + B(\beta, \lambda) \over 2}\rho(\lambda)d\lambda
+\end{equation}
+\begin{equation}
+    P_{HH}(\alpha, \beta) = \int {1 - A(\alpha, \lambda) \over 2} {1 - B(\beta, \lambda) \over 2}\rho(\lambda)d\lambda ,
+\end{equation}
+where $\rho(\lambda)$ describes the distribution of the hidden variable $\lambda$, is non-negative, and satisfies the normalization condition.
+    Plugging these integrals to Eq. \ref{E eq} leads to
+\begin{equation}
+    E(\alpha, \beta) = \int A(\alpha, \lambda)B(\beta, \lambda) \rho(\lambda) d\lambda .
+\end{equation}
+We define a quantity $s$, which describes the polarization correlation in a single pair of particles (and of note can only take on the values $\pm 2$), to be
+\begin{align}
+    s \equiv & A(a, \lambda)B(b, \lambda) - A(a, \lambda)B(b', \lambda) + A(a', \lambda)B(b, \lambda) + A(a', \lambda)B(b', \lambda) \\
+    = & A(a, \lambda)[B(b, \lambda) - B(b;, \lambda)] + A(a', \lambda)[B(b, \lambda) + B(b;, \lambda)]
+\end{align}
+where $a$, $a'$, $b$, and $b'$ are angles. The average of s over many pairs of entangled particles is
+\begin{align}
+    \langle s \rangle = & \int s(a, a', b, b', \lambda) \rho(\lambda) d\lambda \\
+    = & E(a, b) - E(a, b') +E(a', b) + E(a', b') \\
+    = & S(a, a', b, b') .
+\end{align}
+Because $s$ can only take on the values $\pm 2$, its average $S$ must satisfy $-2 \leq S \leq 2$. This is the inequality we will use in our experiment. If we find $S > 2$, then we have violated the Bell inequality and thus disproved all hidden variable theories. On the other hand, if we find $S \leq 2$, no conclusion can be drawn as both quantum mechanics and hidden variable theories are consistent with this result.
+
+Furthermore, we can calculate expected values of S using Eqs. \ref{prob coinc}, \ref{E eq}, and \ref{S eq}. With angle values of $a = -45\degree$, $a' = 0\degree$, $b = -22.5\degree$, and $b' = 22.5\degree$, we find $S = 2\sqrt{2}$. Thus, this is the value we expect to find when we make measurements and calculate a value for S.
+
+
+
+\section{Experimental Procedures}
+
+\begin{figure}
+\centerline{\includegraphics[width=6in]{Block diagram.png}}
+\caption{A block diagram of our experimental set up. HWP stands for half-wave plate and QWP stands for quarter-wave plate. Our experimental setup differed from this block diagram slightly: (1) our laser pointed left and reflected off two mirrors by $90\degree$ before it went through the wave plates and crystals, and (2) the first of the irises along the beams path was placed before the wave plates rather than after the crystals. Figure comes from Ref. \cite{Lab manual}.} \label{Block diagram}
+\end{figure}
+
+A block diagram of our experimental setup can be seen in Fig. \ref{Block diagram}, with a couple of distinctions from our exact set up. First, the $407$ nm laser pointed left, and was incident on two mirrors that redirected it $90\degree$ each before it reached the wave plates in the direction indicated on the diagram. Secondly, the first of our irises, which in the block diagram is show to be after the BBO crystal, was in reality placed between the wave plates and the mirrors. 
+
+Light from a pump laser passes through two wave plates, a half-wave plate and a quarter-wave plate, before coming to our crystal. The half-wave plate adjusts the polarization angle of the laser light. The quarter-wave plate adjusts the phase between horizontally and vertically polarized components of the beam. These are used to tune the entanglement state of downconverted photons. The crystals in the path of the laser beam produce entangled photons by type-I spontaneous parametric down-conversion. The entangled photons leave the crystal at an angle, which we set our rail assemblies to match. On each rail assembly is a polarizer sitting in front of a collector assembly with a filter over it, where photons are detected. The collectors are connected to the single photon counting module. Coincidences are counted when a photon is detected from both collector assemblies within a time period of $25$ ns.
+
+Before data can be taken, the laser beam's path must be establish and the optical rails must be aligned. The laser beam is incident upon two mirrors, each deflecting the beam's path by $90\degree$, before reaching the crystals. In between the second mirror and the crystal as well as past the crystal sit two irises. To establish the beam's path, these irises are shut to a minimum aperture size, and the mirrors are then adjusted so that the beam is still passes through both (the irises are reopened later when measurements are taken as to not cause any unwanted scattering of photons). Furthermore, we retroreflect the laser beam off the BBO crystal back into the laser.
+
+To align the optical rails in accordance with Eq. \ref{get angle eq}, we set the optical rails as close to $6.4232\degree$ apart as possible and center along the laser beam's path past the crystal. To make fine tuning adjustments, we use an He-Ne laser pointed at an alignment assembly and two fiber optic cables which attach to the back of either collector assembly (the filters for the collector assemblies must be removed for this process). By attaching one of the fiber optic cables to the alignment assembly, the He-Ne beam is transmitted from the laser to the collector assembly and then to the crystal, where it bounces off and reflects to the other assembly. From there it is transmitted through that collector assembly's fiber optic cable. The height and angle of the collector assemblies can be adjusted in height and angle, with the goal being to observe the strongest beam at the end of the other collector assembly's fiber optic cable. The collector assembly that was connected to the alignment assembly was swapped back and forth until the beam was sufficiently strong.
+
+\begin{figure}
+\centerline{\includegraphics[width=4.5in]{HWP data.png}}
+\caption{A plot of our data taken when tuning the half-wave plate. The blue line is data taken with polarizer settings $(0\degree, 0\degree)$, and the red line is data taken with polarizer settings $(90\degree, 90\degree)$. The x-value where the two lines intersect, at HWP-angle $= 58\degree$, is the value to which we set our half-wave plate.} \label{HWP tuning}
+\end{figure}
+
+Furthermore, we set the pump beam polarization to maximize entanglement by tuning the half-wave plate. This was done by taking two sets of measurements, one with the polarizers set to $(90\degree, 90\degree)$ and the other at $(0\degree, 0\degree)$. We took measurements with the half-wave plate at $30\degree$, $50\degree$, $70\degree$, and $90\degree$, and then at $20\degree$, $40\degree$, $60\degree$, and $80\degree$ for the two polarizer settings respectively. The data can be seen in Fig. \ref{HWP tuning}. Given that the alignment process described above took longer than expected our values for the setting of the quarter-wave plate and both polarizers orientation were taken from Prof. Jason Stalnaker.
+
+Data collection for this lab was completed with all lights turned off except for the monitor screen of the lab computer. This was done to reduce the number of coincidences not from entangled photons produced in our crystals. We took 16 measurements with difference polarizer degree settings, with each measurement lasting $8$ min. 
+
+
+\section{Discussion of Results}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c} \hline \hline
+        Polarizer Setting & Number of Coincidences in $8$ min \\
+        \hline $-45\degree, -22.5\degree$ & $259$ \\
+        \hline $-45\degree, 22.5\degree$ & $153$ \\
+        \hline $-45\degree, 67.5\degree$ & $129$ \\
+        \hline $-45\degree, 112.5\degree$ & $244$ \\
+        \hline $0\degree, -22.5\degree$ & $344$ \\
+        \hline $0\degree, 22.5\degree$ & $329$ \\
+        \hline $0\degree, 67.5\degree$ & $97$ \\
+        \hline $0\degree, 112.5\degree$ & $95$  \\
+        \hline $45\degree, -22.5\degree$ & $148$ \\
+        \hline $45\degree, 22.5\degree$ & $253$ \\
+        \hline $45\degree, 67.5\degree$ & $207$ \\
+        \hline $45\degree, 112.5\degree$ & $69$ \\
+        \hline $90\degree, -22.5\degree$ & $72$ \\
+        \hline $90\degree, 22.5\degree$ & $77$ \\
+        \hline $90\degree, 67.5\degree$ & $224$ \\
+        \hline $90\degree, 112.5\degree$ & $250$ \\
+         \hline \hline
+    \end{tabular}
+    \caption{The number of coincidences obtained over an 8 minute period for 16 different polarizer settings. A coincidence is counted every time a photon is detected by both collector assemblies within a $25$ ns time period.}
+    \label{coincidences}
+\end{table}
+
+A table of the number of coincidences obtained for each polarizer setting can be seen in Table \ref{coincidences}. We plug the values obtained in to Eq. \ref{E with counts} and calculate $E(-45\degree, -22.5\degree) \approx 0.2544$, $E(0\degree, 22.5\degree) \approx 0.5419$, $E(-45\degree, 22.5\degree) \approx -0.3825$, and $E(0\degree, -22.5\degree) \approx 0.5414$. These four values are plugged into Eq. \ref{S eq} to get our value of $S = 1.72(7)$. Error in S was found by propagating error in counts using the equation
+\begin{align}
+    \sigma_s = & \sqrt{\sum_{i=1}^{16}(\sigma_{N_i} {\partial S \over \partial N_i})^2} \\
+    = & \sqrt{\sum_{i=1}^{16} N_i ({\partial S \over \partial N_i})^2} ,
+\end{align}
+which was given in Ref. \cite{Dehlinger}. Our value for S does not break the Bell inequality given at the end of Sec. \ref{our bell ineq} of $-2 \le S \le 2$. Furthermore, our value is significantly off from our expected value of $S = 2\sqrt{2}$, calculated using the theoretical probabilities in Sec. \ref{our bell ineq}. Thus, we were unable to verify the nonlocality of quantum mechanics and disprove all hidden variable theories in our experiment.
+
+Of course, quantum mechanics has been verified many times before, so we must think about why our obtained result was incorrect. Our values for $E(-45\degree, -22.5\degree)$ and $|E(-45\degree, 22.5\degree)|$ look suspiciously lower than the values we obtained for $E(0\degree, -22.5\degree)$ and $E(0\degree, 22.5\degree)$. This could have been caused for multiple reasons. Perhaps we set a polarizer to an incorrect angle and thus got an erroneous count for that polarizer setting. 
+
+There are several other possible causes of systematic error in this experiment that could have caused our unexpected result. First, we struggled to properly align the rails to get frequent coincidences. Ref. \cite{Lab manual} suggests that a coincidence frequency of $10$ Hz should be relatively easy to achieve but should not be viewed as an upper limit, yet the highest we managed to get our coincidence frequency to was $3.63$ Hz. While it is true that our overall error in $S$ is not purely error from getting too few counts (which would have been reflected in a higher error for our value of $S$), this definitely could have played a part in our surprisingly low value.
+
+Another idea comes from that fact that we did not measure our own values for the tuning of the quarter wave plate or the orientation of the polarizers, nor did we check the purity of our entangled state. These were steps in Ref. \cite{Lab manual} that we skipped, as the alignment process took long enough that afterwards we had to start taking measurements or else we would have run out of lab time. We took the values for the quarter wave plate and the polarizers from Prof. Jason Stalnaker, who completed the lab at a previous date (and found a value for $S$ above $2$). This also does not seem super likely to have caused significant error, as there is not a good reason for the value of the quarter wave plate tuning nor the polarizer orientation to have changed. Nevertheless, it is still a possible cause of our error.
+
+Finally, there may have been an issue with a piece of equipment we used. Two suggestions are damage to the Single-Photo Counting Module or an unclean crystal. For the first suggestion, one of the times we started a data collection, we noticed that one channel had an extraordinarily high level of counts. We stopped the data collection within $3$ seconds and disconnected everything before turning the lights on to discover that one of the filters that covers a collection assembly had fallen out of the piece that screws on to the collection assembly. If this damaged the Single-Photon Counting Module if would have affected our data. As for the second suggestion, it is possible that fingerprints or dust could be present on the crystal, which to our knowledge has not been cleaned since it was acquired by Oberlin's Physics and Astronomy Department. This could also be a source of systematic error.
+
+
+\section{Conclusions}
+
+In this experiment, we attempted to use polarization-entangled photon pairs to break Bell's inequality and prove the nonlocality of quantum mechanics. We derived Bell's inequality for our setup to be $-2 \le S \le 2$. Using our coincidence measurements, we calculated a value of $S = 1.71(7)$. Thus, we were unable to experimentally prove in this lab either the nonlocality of quantum mechanics or the impossibility of hidden variable theorems. Possible sources of error were discussed, such as errors stemming from our struggles to properly align the rail assemblies or potentially faulty equipment. Despite our inconclusive result, this undergraduate lab introduced us to and gave us familiarity with quantum mechanics, a crucial theory in physics.
+
+\section{References}
+
+\begin{thebibliography}{99}
+\bibitem{Griffiths} Griffiths, David J., \textit{Introduction to Quantum Mechanics}, (2005, Pearson Prentice Hall, New Jersey), chapter 12.
+\bibitem{Betchart} Betchart, Burton A., (2004), ``A Test of Bell's Inequality for the Undergraduate Laboratory," thesis, Department of Physics and Asrtonomy, Oberlin College.
+\bibitem{Lab manual} Quantum Optics, PHYS 418 Laboratory Physics, Oberlin College, Fall 2023, Prof. Jason Stalnaker.
+\bibitem{Dehlinger} Dehlinger, Dietrich and Mitchell, M. W., (2002), ``Entangled photons, nonlocality, and Bell inequalities in the undergraduate laboratory," American Journal of Physics \textbf{70}, 903.
+
+\end{thebibliography}
+
+\end{document} 

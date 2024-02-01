@@ -1,0 +1,262 @@
+\documentclass[11pt,letterpaper]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %%                                   %%
+\setlength{\evensidemargin}{0in}  %%                                   %%
+\setlength{\textheight}{8.5in}    %%                                   %%
+\setlength{\topmargin}{0in}       %%                                   %%
+\setlength{\headheight}{0in}      %%                                   %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+%\bibliographystyle{plain}                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%PUT YOUR MACROS HERE
+%\usepackage{multirow}
+\usepackage{amsmath}
+%\usepackage{calligra}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{fancyhdr}
+%\usepackage{longtable}
+%\usepackage{vmargin}
+%\usepackage{slashed}
+\usepackage{graphicx}
+%\usepackage{psfrag}
+%\usepackage{euscript}
+%\usepackage{slashbox}
+\usepackage{ulem}
+%\usepackage{wrapfig}
+%\usepackage{natbib}
+%\usepackage{floatfig}
+%\usepackage{subfigure}
+%\usepackage{palatino}
+%\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% These are user defined functions that make parentheses, brackets, etc. easier to type.
+
+
+\def\bra#1{{\left\langle#1\right\vert}}
+\def\prn#1{{\left(#1\right)}}
+\def\ket#1{{\left\vert#1\right\rangle}}
+\def\abs#1{{\left|#1\right|}}
+\def\brk#1{{\left[#1\right]}}
+
+\newcommand{\req}[1]{\section*{\hfil #1\hfil}}                    \renewcommand{\refname}{\hfil References Cited\hfil}
+
+\graphicspath{ {./images/} }
+
+\begin{document}
+
+\title{Measurement of the Fermi Coupling Constant by Determination of Mean Lifetime of Cosmic Muons}
+
+\author{Colvin Iorio}
+
+\date{September 28, 2023}
+\maketitle
+
+
+\begin{abstract}
+    We use scintillation detection to measure the mean muon decay time and compute the Fermi coupling constant. Our detector records the time between cosmic muons entering and decaying within our detector. We fit a weighted exponential function to a histogram of that time difference to find a value for the mean lifetime of a muon, finding a value of $2.126 \pm 0.029$ $\mu s$. Our value for the Fermi coupling constant ${G_F \over (\hbar c)^3}$ was $(1.185 \pm 0.008) \times 10^{-5}$ GeV$^{-2}$, which was expectedly larger than the literature value of $(1.16637 \pm 0.00001)*10^{-5}$ GeV$^{-2}$ taken from Balantekin, A. B., et al., \textit{Journal of Physics G Nuclear and Particle Physics}, (2010, IOP Publishing, Bristol, UK), section 1, due to negative muons having a second, faster decay mechanism in our detector. In addition, we find the ratio of positive to negative muons that decayed in our detector.
+\end{abstract}
+
+
+\section{Introduction}\label{sec intro}
+
+Muons are fundamental particles and as such have many applications within the field of physics. \textbf{(What a terrible way to phrase this, figure something else out)} In this experiment, we measure the lifetime of cosmic muons and use it to determine the mean lifetime of muons. With a value for the mean lifetime of muons, we calculate the Fermi coupling constant and the ratio of positive to negative muons.
+
+Muons were discovered in 1937 by C.W. Anderson and S.H. Neddermeyer when they exposed a cloud chamber to cosmic rays \cite{Coan}. The original measurement for the lifetime of muons was recorded in 1941 by Rossi and Hall \cite{Wolfs}. Measurements were originally made by processing photographs of equipment that measured the time between muons stopping and decaying in dense absorbers. With the invention of digital signal processing, analysis of muon lifetime has become much less cumbersome.
+
+Familiarity with equipment used in this experiment provides us with important skills in the fields of physics. One example of physics today being conducted with similar equipment can be seen in Ref. \cite{Alekseev}, which analyzed data taken by the DANSS detector, located directly beneath the reactor core at a power plant and containing a plastic scintillator. This detector collected data on muons for nearly four calendar years with the goal of determining certain information about antineutrinos. Scintillation detection itself is of importance to the physics world, as it is one way that physicists can study particles that decay on very short timescales. The Deep Underground Neutrino Experiment is using scintillation detection to investigate neutrino properties. \cite{Gauch}.
+
+In this lab report, we will discuss the theory behind what muons are, how they are created, and their decay processes. Then we will talk about our experimental procedure to make a measurement of the mean muon lifetime. Finally, we will discuss our results and show our calculations to find values for the Fermi coupling constant and the ratio of positive to negative muons in our detector.
+
+
+
+\section{Theory}
+
+\subsection{Basic Muon Information}
+
+Muons are leptons, along with electrons, tau particles, and their three corresponding neutrinos. Following information from Ref. \cite{Frauenfelder}, the muon has the same negative charge as an electron and a spin of ½. Muons are much more massive than electrons, with $m_\mu$ = $105.658367 \pm 0.000004$ MeV \cite{Balantekin}. They do not interact with matter via the strong force but only through the weak and electromagnetic forces. Muons are also unstable and decay on the order of microseconds. 
+
+The source of muons in our lab is cosmic muons. The Earth is constantly being bombarded with high-energy charged particles called “cosmic rays” which come from unknown sources \cite{Coan}. These particles collide with the nuclei of air molecules, producing protons, neutrons, pions, and more, as seen in Fig. \ref{Cosmic ray cascade}. Charged pions that are produced undergo spontaneous decay via the weak force into a muon and a neutrino or antineutrino. 
+
+\begin{figure}
+\centerline{\includegraphics[width=4in]{Cosmic ray cascade, from TeachSpin Muon Manual pg 4}}
+\caption{A cosmic ray cascade, initiated by a high energy cosmic proton striking the nucleus of an air molecule. Image taken from page 4 of Ref. \cite{Coan}.} \label{Cosmic ray cascade}
+\end{figure}
+
+
+These muons travel near the speed of light and can travel tens of kilometers from the upper atmosphere to sea-level or below before they undergo decay an electron plus a neutrino and antineutrino. The Feynman diagram of this can be seen in Fig. \ref{Feynman diagram}. The transit time from their production point to sea level is approximately 50 microseconds \cite{Coan}. Given that the lifetime of muons at rest is more than a factor of 20 smaller than this time frame, this is evidence for the time-dilation effect of special relativity \cite{Frauenfelder}.
+
+\begin{figure}
+\centerline{\includegraphics[width=2.75in]{Muon decay, TeachSpin Muon Manual cover page}}
+\caption{Decay of a negatively charged muon into a muon neutrino, electron, and electron antineutrino. Image take from the cover of Ref. \cite{Coan}.} \label{Feynman diagram}
+\end{figure}
+
+
+\subsection{Muon Decay}
+
+Following Ref. \cite{Frauenfelder}, for a group of particles where each has a decay rate $\lambda$, the number of particles that decay in a time $dt$ is given by
+\begin{equation}
+    dN = - \lambda N(t) dt ,
+\end{equation}
+where $N(t)$ represent the number of particles present at time $t$. We can integrate this equation to get
+\begin{align}
+    N(t) = & N(0) e^{- \lambda t} \\
+    = & N(0) e^{- t / \tau} ,
+\end{align}
+where $\tau$ is the mean life of muons and is connected to $\lambda$ by
+\begin{equation}
+    \tau = {1 \over\lambda} .
+\end{equation}
+
+The way the muons decay is via the weak force. The Fermi coupling constant $G_F$ is a measure of the strength of the weak force \cite{Coan}. The relationship between the mean muon lifetime and $G_F$ is fairly simple and is given by
+\begin{equation}
+    \tau = {192 \pi^3 \hbar^7 \over {G_F}^2 {m_\mu}^2 c^4 },
+\end{equation}
+where $m_\mu$ is the mass of a muon. Ease of computation can be increased if this equation is rearranged to be in eV units to
+\begin{equation}
+    {G_F \over (\hbar c)^3} = \sqrt{{192 \pi^3 \hbar \over \tau (m_\mu c^2)^5}} ,
+\end{equation}
+as the value for Fermi coupling constant is often given in terms of ${G_F \over (\hbar c)^3}$.
+
+\subsection{Scintillator Physics and Muon Charge Ratio}
+
+Muons can be both positively or negatively charged. Negatively charged muons have an extra decay method that is relevant when using scintillation detection. Following Ref. \cite{Coan}, negative muons can bind to a nucleus similarly to the way an electron would. Because the muon is limited by the Pauli exclusion principle of electrons, the muon can occupy the closest orbital to the nuclei despite an electron already being present in this orbital. The negative muon can then interact with protons in the nucleus and have a second potential decay mechanism
+\begin{equation}
+    \mu^- + p \xrightarrow{} n + \nu_\mu .
+\end{equation}
+Having a second decay mechanism means that negative muons on average decay faster than their positive counterparts, so the mean negative muon lifetime is less than the mean positive muon lifetime. On the other hand, given positive muons have only one decay method, the mean positive muon lifetime is the same as the mean free space muon lifetime.
+
+Therefore, it is of interest to look at the charge ratio of muons, which we can do with our observed muon lifetime value. Following Ref. \cite{Coan}, we can define $N^-$ and $N^+$ to be the number of negative and positive muons respectively. Then, the average observed decay rate $\langle\lambda\rangle$ and the corresponding lifetime $\tau_{obs}$ are given by
+\begin{align}
+    \langle\lambda\rangle = {N^+ \lambda^+ + N^- \lambda^- \over N^+ + N^-} \\
+    = {\rho \lambda^+ + \lambda^- \over 1 + \rho}
+\end{align}
+\begin{equation}
+    \langle\lambda\rangle^{-1} = \tau_{obs} = {1 + \rho \over \rho \lambda^+ + \lambda^-}
+\end{equation}
+\begin{align}
+    \tau_{obs} = (1 + \rho) ({1 \over \tau^-} + {\rho \over \tau^+})^{-1} \\
+    = (1 + \rho) {\tau^- \tau^+ \over \tau^+ + \rho \tau^-} ,
+\end{align}
+where $\rho \equiv {N^+ \over N^-}$, $\tau^- \equiv (\lambda^-)^{-1}$ is the lifetime of negative muons in the scintillator, and $\tau^+ \equiv (\lambda^+)^{-1}$ is the equivalent quantity for positive muons. We can then rearrange the final expression for $\rho$ to get
+\begin{equation}
+    \rho = - {\tau^+ \over \tau^-} ({\tau^- - \tau_{obs} \over \tau^+ - \tau_{obs}}) .
+\end{equation}
+This leaves us with an expression for the ratio of positive to negative muons provided the mean lifetime of positive muons $\tau^+$, which is equal to the free space mean lifetime of muons, the mean lifetime of negative muons $\tau^-$ in a plastic scintillator, a value we can take from measured values of negative muon lifetime in carbon from Ref. \cite{Reiter}, and finally our observed value of muon lifetime $\tau_{obs}$
+
+\section{Experimental Procedures}
+
+\begin{figure}
+\centerline{\includegraphics[width=4in]{Block diagram.png}}
+\caption{Block diagram of the equipment for this experiment. Diagram comes from Ref. \cite{Coan}.}
+\end{figure}
+\label{Block Diagram}
+
+A block diagram for our equipment is shown in Fig. \ref{Block Diagram}. Following information from Ref. \cite{Coan}, the detector contains both a scintillator and a photomultiplier. The scintillator is composed of flours, or fluorescent molecules, mixed with a solid plastic solvent. Any charged particle that enters the scintillator loses some of its kinetic energy due to ionization and atomic excitation of the solvent molecules. The deposited kinetic energy is transferred to the flours, whose electrons then reach excited states. When the electrons go through radiative de-excitation, light in the blue and near-UV portions of the electromagnetic spectrum is emitted. The typical photon yield for the plastic scintillator is 1 photon emitted per 100 eV of deposited energy.
+
+The photomultiplier tube in the detector works via the photoelectric effect, when electrons are emitted from materials after they absorb a photon. Photomultiplier tubes have a series of dynodes and apply a negative voltage across the series \cite{Shimadzu}. As the photon from the scintillator strikes the first dynode, $\delta$ electrons are released and accelerate towards the second dynode, causing a secondary emission of electrons. This leads to $\delta^n$ electrons being released, where $n$ is the number of dynodes and $\delta$ is referred to as the secondary emission coefficient. With this method, photomultiplier tubes can detect individual photons and can amplify the current produced by incident light by as much as 100 million times depending on the amount of voltage applied.
+
+The output of the photomultiplier tube feeds an amplifier which then feeds a discriminator. The discriminator has a threshold voltage set, under which no signal can be received. This isolates the larger signals from muon stops and decays from background noise.
+
+The only muons we are interested in for our measurements are muons which enter the scintillator with a total energy of only about 160 MeV, as these muons slow, stop, and decay within the scintillator \cite{Coan}. A logic signal is triggered in a timing clock when a muon stops in the scintillator and emits light detected by the photomultiplier tube. The stopped muon then decays into an electron, neutrino, and anti-neutrino. Because electron mass is about 210 times smaller than muon mass, the electron tends to be very energetic. It produces scintillator light all along its path, which is detected by the photomultiplier tube and triggers the timing clock. The time interval between the clock triggering is the quantity that is used to measure the muon lifetime. Our clock recorded data in quantized measurements of $20$ ns, and times out from recording a decay at $20000$ ns.
+
+With this set up, we took two sets of data. First, we set the threshold voltage on the discriminator to 150 mV and ran the data collection from Thursday, September 7th at 3:45 PM to Sunday, September 10th at 11:46 AM. Then, we ran a second data collection from that Sunday at 11:50 AM until Thursday, September 14th at 1:32 PM with the threshold voltage set to $300$ mV. The photomultiplier tube voltage on the detector was set to $-1098$ V, which was near the recommended level of $-1100$ V in Ref. \cite{Coan} to give a reasonable number of detections. 
+
+
+\section{Discussion of Results}
+
+For both sets of data, we had to determine how far to shift the start of the bins on our histogram. This was because it the bins at the start of the data has a lower number of counts than expected. We attributed this to the detector not being able to distinguish between two distinct signals for the fastest decays. To do determine how far to shift, we made a histogram with 400 bins of width $50$ ns seen in Fig. \ref{400 bins}. This bin width was chosen to be intentionally small compared with the clock quanitzation of $20$ ns, so that we could see more accurately at what time difference the clock was able to distinguish between distinct signals. 
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{150mV400binsLabeled (1).pdf}
+        \label{fig:subfigA}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \includegraphics[width=\textwidth]{300mV400binsLabeled.pdf}
+        \label{fig:subfigB}
+    \end{subfigure}
+    \caption{Histograms of the decay time of muons once they entered our detector. The left figure is of the 150 mV discriminator threshold, and the right figure is of the 300 mV discirminator threshold. Both histograms have 400 bins, each bin represented by a marker. Our largest decay time for both data sets was $20000$ ns, where the clock times out. The effect of the quantization of the clock can be seen due to the range of decays at similar time values. Upon examination, for our analysis we decided to shift the data by $150$ ns due to the first 3 bins of size $50$ ns having fewer counts than expected.}
+\end{figure}
+\label{400 bins}
+
+Examining Fig. \ref{400 bins}, the first 2 bins have an unusually low number of counts, and the third bin is still lower than expected. Due to the nature of an exponential fit, throwing out extra data does not affect the given number for $\lambda$, which equals the mean lifetime $\tau^{-1}$. Therefore, we decided to shift the starting point of the first bin by $150$ ns when we replotted the data. When replotting, we used a larger bin width in order to capture enough quantized time periods within each bin, which meant the number of delays did not vary between bins due to our clock's quantization.
+
+\begin{figure}[hp]
+    \centering
+    \begin{subfigure}[b]{0.75\textwidth}
+        \includegraphics[width=\textwidth]{150mV50binsLabeled.pdf}
+        \label{fig:subfigA}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.75\textwidth}
+        \includegraphics[width=\textwidth]{300mV50binsLabeled.pdf}
+        \label{fig:subfigB}
+    \end{subfigure}
+    \caption{The top figure is a 50 bin histogram of data with $150$ mV discriminator threshold, and the bottom figure is a 50 bin histogram of data with $300$ mV discriminator threshold. There are 50 histogram bins with a width of $397$ ns, and we shifted the starting point for the bins by $150$ ns to reduce error from the detector not being able to pick up muon decays that occur that quickly. The error for each bin is the square root of counts within that bin. The weighted exponential fitted to both of these graphs is of the form $y(x) = y_0 + Ae^{-invTau*x}$.}
+\end{figure}
+\label{50 bins}
+
+The new histograms for both sets of data can be seen in Fig. \ref{50 bins}. The histograms both have 50 bins, the first of which starts at $150$ $ns$. Each bin is $397$ $ns$ wide so that the final bin on both graphs included the largest value of $20000$ $ns$. Then we did a weighted exponential fit of the 50 data points, with error for each point being the square root of counts in that bin. The exponential equation used was
+\begin{equation}
+    y(x) = y_0 + Ae^{-x / \tau} ,
+\end{equation}
+where $\tau$ is our mean muon lifetime. For the data with the discriminator threshold set to 150 mV our value for $\tau$ was $2114 \pm 72$ $ns$, and for the data with the discriminator threshold set to 300 mV is was $2128 \pm 32$ $ns$. We took the weighted average of these two values with
+\begin{equation}
+    \langle \tau \rangle = {\sum {\tau_i \over {\delta_i}^2} \over \sum {1 \over {\delta_i}^2}} ,
+\end{equation}
+to get our final $\tau$ of $2.126 \pm 0.029$ $\mu s$, where error was calculated with the equation
+\begin{equation}
+    \delta \langle \tau \rangle = \sqrt{{1 \over \sum {1 \over {\delta_i}^2}}} .
+\end{equation}
+This is lower that the literature value for the free space lifetime of a muon, $2.197034 \pm 0.000021$ $\mu s$, from Ref. \cite{Balantekin}. However, this was to be expected, as our muons were not in free space but in the scintillator, where the negative muons had slightly faster decay times on average. This small discrepancy affected our value for the Fermi coupling constant ${G_F \over (\hbar c)^3}$ as well, which came out to be $(1.185 \pm 0.008) * 10^{-5}$ $GeV^{-2}$. Error in this value was found using the equation
+\begin{equation}
+    \delta ({G_F \over (\hbar c)^3}) = -{\delta \tau \over 2} (\tau^{-3/2}) \sqrt{{192 \pi^3 \hbar \over (m_\mu c^2)^5}}  .
+\end{equation}
+Our value for the Fermi coupling constant is higher than the literature value of $(1.16637 \pm 0.00001)*10^{-5}$ $GeV^{-2}$ from \cite{Balantekin}, which again is what we expected due to our muons not being free space muons.
+
+With our mean muon lifetime, we were then able to calculate a value for $\rho$, or the charge ratio of muons. Plugging in our measured value for $\tau_{obs}$, the literature free space muon lifetime for $\tau^+$, and $2.043 \pm 0.003$ $\mu s$ for $\tau^-$, we found $\rho$ to be $1.27^{+1.61}_{-0.68}$, where the error was computed through calculating $\rho(\tau + \delta \tau)$ and $\rho(\tau - \delta \tau)$. Although the error is quite large, the value appears somewhat reasonable when comparing it to the charge ratios shown in Fig. \ref{Charge ratio}.
+
+\begin{figure}
+\centerline{\includegraphics[width=2.75in]{Muon ratio at different energy levels.png}}
+\caption{Plot of muon charge ratio as a function of muon momentum. Figure is from Ref. \cite{Workman}, data in the figure comes from Refs. [62, 70, 76, 81, 82] in Ref. \cite{Workman}.}
+\end{figure}
+\label{Charge ratio}
+
+\section{Conclusions}
+
+In this experiment we used scintillation detection to measure the time between muons entering and decaying within our detector. We graphed this data in a histogram with 50 bins and fit a weighted exponential to the 50 points. From this we were able to calculate a mean muon lifetime of $2.126 \pm 0.029$ $\mu s$. Then, we calculated the Fermi coupling constant using our value of the mean muon lifetime and got $(1.185 \pm 0.008)*10^{-5}$ $GeV^{-2}$. Due to our muons not being free space muons but instead being detected in a scintillator, this value was expectedly larger than the literature value of $(1.16637 \pm 0.00001)*10^{-5}$ $GeV^{-2}$ from \cite{Balantekin}. Finally, we calculated a value for the ratio of positive to negative muons, finding a value of $1.27^{+1.61}_{-0.68}$.
+
+One area of work still to be done is the determination of the source of high energy cosmic rays. In Ref. \cite{Scornavacce}, the Pierre Auger Observatory is one place doing research in this area, recently undergoing an upgrade to improve its sensitivity to mass composition observables such as the muon content of air showers produced by cosmic rays. The underground muon detector of this observatory utilizes scintillation detection, as did our experiment.
+
+
+\section{References}
+
+\begin{thebibliography}{99}
+\bibitem{Coan} Coan, T., and Ye, J., \textit{Muon Physics MP1-A User’s Manual}, (2003, TeachSpin, Inc., Buffalo, NY).
+\bibitem{Wolfs} Wolfs, F., (n.d.), ``The History of the Mesurement of the Muon Lifetime," Department of Physics and Astronomy, University of Rochester, Department talk, \url{http://teacher.pas.rochester.edu/wyp2005/presentations/072406/DSPTalk0706.pdf}.
+\bibitem{Alekseev} Alekseev, I., et al., 2022, “Observation of the temperature and barometric effects on the cosmic muon flux by the DANSS detector,” Eur. Phys. J. C 82, 515.
+\bibitem{Gauch} Gauch, A., 2023, “Scintillation light detection performance for the DUNE ND-LAr 2 × 2 modules,” JINST 18, C04004.
+\bibitem{Frauenfelder} Frauenfelder, H., and Henley, E. M., \textit{Subatomic Physics}, (1974, Prentice Hall, Englewood Cliffs, NJ), sections 5.6 and 5.7.
+\bibitem{Balantekin} Balantekin, A. B., et al., \textit{Journal of Physics G Nuclear and Particle Physics}, (2010, IOP Publishing, Bristol, UK), section 1.
+\bibitem{Reiter} Reiter, R.A. etal., Phys. Rev. Let. 5, 2 (1960).
+\bibitem{Shimadzu} Shimadzu Scientific Instruments. (n.d.), ``How does a photomultiplier tube work?", Shimadzu, \url{https://www.ssi.shimadzu.com/service-support/faq/uv-vis/instrument-design/9/index.html#:~:text=PMT’s%20function%20by%20a%20photon,charge%20that%20can%20be%20measured}. 
+\bibitem{Workman} Workman, R.L. et al., (Particle Data Group), Prog. Theor. Exp. Phys. 2022, 083C01 (2022).
+\bibitem{Scornavacce} Scornavacce, M., 2022, “Muon counting with the Underground Muon Detector of The Pierre Auger Observatory,” EPJ Web of Conferences 283, 06012.
+
+
+\end{thebibliography}
+
+\end{document} 

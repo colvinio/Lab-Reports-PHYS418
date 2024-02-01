@@ -1,0 +1,279 @@
+\documentclass[11pt,letterpaper]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %%                                   %%
+\setlength{\evensidemargin}{0in}  %%                                   %%
+\setlength{\textheight}{8.5in}    %%                                   %%
+\setlength{\topmargin}{0in}       %%                                   %%
+\setlength{\headheight}{0in}      %%                                   %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+%\bibliographystyle{plain}                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%PUT YOUR MACROS HERE
+%\usepackage{multirow}
+\usepackage{amsmath}
+%\usepackage{calligra}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{fancyhdr}
+%\usepackage{longtable}
+%\usepackage{vmargin}
+%\usepackage{slashed}
+\usepackage{graphicx}
+%\usepackage{psfrag}
+%\usepackage{euscript}
+%\usepackage{slashbox}
+\usepackage{ulem}
+%\usepackage{wrapfig}
+%\usepackage{natbib}
+%\usepackage{floatfig}
+%\usepackage{subfigure}
+%\usepackage{palatino}
+%\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% These are user defined functions that make parentheses, brackets, etc. easier to type.
+
+
+\def\bra#1{{\left\langle#1\right\vert}}
+\def\prn#1{{\left(#1\right)}}
+\def\ket#1{{\left\vert#1\right\rangle}}
+\def\abs#1{{\left|#1\right|}}
+\def\brk#1{{\left[#1\right]}}
+
+\newcommand{\req}[1]{\section*{\hfil #1\hfil}}                    \renewcommand{\refname}{\hfil References Cited\hfil}
+
+\graphicspath{ {./images/} }
+
+\begin{document}
+
+\title{Calculation of Average Air Molecule Speed through Measurement of Air Pressure in a Vacuum Chamber}
+
+\author{Colvin Iorio}
+
+\date{November 14, 2023}
+\maketitle
+
+
+\begin{abstract}
+    We use a vacuum chamber to make a measurement of the average speed of air molecules. A vacuum chamber with a hole in the bottom is connected to a diffusion pump. We plot the natural log of pressure over initial pressure versus time and use the slope to make our calculation. We find the average speed of air molecules to be $5072 \pm 96$ m/s, which is an order of magnitude bigger than the expected value of about $512.9$ m/s calculated using the equation for the root mean square speed of air molecules. We discuss possible sources of error that may have caused this discrepancy.
+\end{abstract}
+
+
+\section{Introduction}\label{sec intro}
+
+Vacuum systems are widely used throughout many sub-fields of physics, and thus it is useful for undergraduate physicists to gain experience operating vacuums. In this experiment, we measure the change in pressure in a vacuum chamber with a small hole connected to a diffusion pump. By plotting the pressure versus time, we are able to estimate the average speed of air molecules.
+
+In 1644, Torricelli (1608-1647) succeeded at producing a vacuum by submerging a glass tube filled with mercury in a mercury pool, with the open end of the tub submerged \cite{Marquardt}. He showed that the mercury column was always 760 mm above the level of the pool, demonstrating for the first time the pressure of atmospheric air. Blaise Pascal (1623-1662) did further work with this Hg barometer invented by Torricelli by measuring the varying levels of atmospheric pressure at different altitudes. For their work, both Torricelli and Pascal had units of measurement of pressure named after them, the Torr and the Pascal respectively.
+
+Another famous early example demonstrating properties of atmospheric pressure occurred in 1954 in the Magdeburg Hemispheres experiment \cite{Marquardt}. In this experiment, Otto von Guericke (1602-1686) demonstrated that when the air between two copper semi-spheres was partially pumped out, the two semi-spheres could not be separated even by using two teams of eight horses.
+
+Nowadays, vacuum physics and techniques are necessary for many pieces of scientific equipment, such as particle accelerators or test chambers for spacecraft \cite{Mark}. CERN, or the European Organization for Nuclear Research, was able to achieve pressures as low as $10^{-17}$ bar using pumps, which corresponds to a few hundred particles per cm$^{3}$ \cite{Marquardt}. At atmospheric pressure and room temperature, the number of particles per cm$^{3}$ is around 3 $\times$ 10$^{19}$. Still, the best vacuum obtained on earth would be a high-pressure area compared to space. The interstellar particle density of the Milky Way is about 5 $\times$ 10$^{4}$ particles per m$^{3}$, which is equivalent to 0.05 particles per cm$^3$, and between galaxies particle density can be as low as a single particle per m$^3$.
+
+In this lab report, we will derive an equation for the number of air molecules per second that pass through an aperture and use it in conjunction with the ideal gas law to find an equation that relates the slope of a graph of pressure versus time to the average speed of air molecules. Then, we will review how certain equipment used in a vacuum setup works, as well as what experimental procedures we followed in lab. Finally, we will discuss the result we obtained for the average speed of air molecules and potential causes for error.
+
+
+
+\section{Theory}
+
+\subsection{Deriving the Rate at which Molecules Pass through a Hole}
+
+Consider a region of gas at pressure $p$ separated from a region with no gas by a plate with a hole of area $A$ cut in it. We can calculate the rate at which gas atoms escape through this aperture. Consider a volume element $dV$ located somewhere above the hole. Following Ref. \cite{Mark}, the number of molecules with a speed between $v$ and $v+dv$ in $dV$ is,
+\begin{equation}
+    d^4N = (n(v) dv) dV , \label{Num molecules}
+\end{equation}
+where the function $n(v)$ is the velocity distribution of the particles (in this case a Maxwell-Boltzmann distribution). We can write the volume element $dV$ in terms of polar coordinates as,
+\begin{equation}
+    dV = r^2 dr \sin \theta d\theta d\phi ,
+\end{equation}
+and plug it in to Eq. \eqref{Num molecules} to get,
+\begin{equation}
+    d^4N = n(v) dv\mkern2mu r^2 dr \sin \theta d\theta d\phi . \label{dif eq}
+\end{equation}
+
+This equation only gives us the number of molecules with a speed between $v$ and $v + dv$, whereas we want to narrow down to only particles moving in the right direction to pass through the hole. We can multiple Eq. \eqref{dif eq} by the fraction $A \cos \theta / 4 \pi r^2$ to get,
+\begin{equation}
+    d^4N = n(v) dv\mkern2mu r^2 dr \sin \theta d\theta d\phi {A \cos \theta \over 4 \pi r^2} ,
+\end{equation}
+where $A \cos \theta$ is the area of the opening projected onto a plane perpendicular to $r$ and $4 \pi r^2$ is the area of the whole sphere of radius $r$. Now, we can get the rate at which particles from the volume element $dV$ pass through the aperture by dividing $d^4N$ by $dt$ to get,
+\begin{align}
+    {d^4N \over dt} = & A n(v) dv {dr \over dt} \cos \theta d(\cos \theta) d \phi \\
+    = & A n(v) v\mkern2mu dv\mkern2mu d(\cos \theta) \cos \theta d \phi . \label{integrateable}
+\end{align}
+
+To calculate the rate molecules above the plane pass through the aperture, Eq. \eqref{integrateable} must be integrated over the upper half of a sphere, giving,
+\begin{align}
+    {dN \over dt} = & {A \over 4\pi} \int_0^\infty vn(v) dv \int_0^{2\pi} d\phi \int_0^{{\pi \over 2}} \cos \theta d(\cos \theta) \\
+    = & {A \over 4} \int_0^\infty v n(v) dv . \label{maxbolt}
+\end{align}
+This integral can be evaluated using the Maxwell-Boltzmann distribution, as if $n(v)$ is a Maxwell-Boltzmann distribution function, the integral in Eq. \eqref{maxbolt} can be expressed in terms of the average velocity $\bar{v}$ with,
+\begin{align}
+    \int v n(v) dv = & \bar{v} \int n(v) dv \\
+    = & \bar{v} N_0 ,
+\end{align}
+where $N_0$ is the total number of atoms per cubic centimeter in the gas. Therefore, the number of atoms striking the aperture per second is given by,
+\begin{equation}
+    {dN \over dt} = {1 \over 4} A N_0 \bar{v} . \label{result}
+\end{equation}
+We can rewrite this equation using the fact that the total number of atoms $N$ in the volume is related to the atomic density $N_0$ and the volume $V$ through,
+\begin{equation}
+    N = N_0 V .
+\end{equation}
+Thus, Eq. \eqref{result} can also be written as,
+\begin{equation}
+    {dN \over dt} = {1 \over 4} {A \bar{v} \over V} . \label{plug in able}
+\end{equation}
+This equation will prove useful in the next section, where we derive an equation that will help us find average air molecule speed in our experiment.
+
+
+\subsection{Using the Ideal Gas Law to Derive the Velocity of Atoms}
+We can derive at expression for the rate of decrease of the pressure in a vacuum chamber using the ideal gas law, 
+\begin{equation}
+    PV = NkT,
+\end{equation}
+where $N$ is the number of molecules in volume $V$, $k$ is Boltzmann's constant, and $T$ is the absolute temperature. Following prompts from Ref. \cite{PHYS lab}, if we solve this equation for $P$ and then take the derivative with respect to time, we get,
+\begin{align}
+    {d P(t) \over dt} = & {d \over dt} ({NkT \over V}) \\
+    = & ({kT \over V}) {d N(t) \over dt} ,
+\end{align}
+as $N$, the number of molecules, is the only variable on the right side of the equation dependent on time. We solved for ${dN \over dt}$ in the previous subsection and can plug Eq. \eqref{plug in able} in to get,
+\begin{align}
+    {d P(t) \over dt} = & ({kT \over V}) ({-NvA \over 4V}) \\
+    = & -{vA \over 4V} {NkT \over V} \\
+    = & -{vA \over 4V} P(t) ,
+\end{align}
+where v is the average velocity of the air molecules.
+
+To solve this differential equation, we integrate, yielding,
+\begin{equation}
+    \int {dP(t) \over P(t)} = \int -{vA \over 4v} dt
+\end{equation}
+\begin{equation}
+    \log(P(t)) = - {vA \over 4V} t + P_0   
+\end{equation}
+\begin{align}
+    P(t) = & e ^{-({vA \over 4V}) t + P_0} \\
+    = & P_0e ^{-({vA \over 4V}) t} ,
+\end{align}
+where $P_0$ is the initial pressure in the vacuum chamber. We can rewrite this equation for $P(t)$ to be,
+\begin{equation}
+    {P(t) \over P_0} = e^{-({vA \over 4V}) t}
+\end{equation}
+\begin{equation}
+    \ln ({P(t) \over P_0}) = -({vA \over 4V}) t.
+\end{equation}
+This equation is set up in the form $y = ax$, where $\ln ({P(t) \over P_0})$ is the dependent variable, $t$ is the independent variable, and $-({vA \over 4V})$ is the slope. At $t=0$ there is no intercept because the term on the left-hand side of the equation is $\ln(1)$, which of course equals $0$. We can use this equation to find the average speed of air molecules in our vacuum system. If $a$ refers to the value of the slope when plotting $\ln ({P(t) \over P_0})$ versus $t$, then,
+\begin{equation}
+    a = -({vA \over 4V}) t
+\end{equation}
+\begin{equation}
+    v = - {4aV \over A} \label{to find speed}
+\end{equation}
+Thus, we are left with an equation for the average speed of air molecules that we can calculate with measurements of the volume of our vacuum chamber $V$, the area of the hole in the bottom of the vacuum chamber that air will escape through $A$, and the slope of a plot of $\ln ({P(t)) \over P_0})$ versus time.
+
+
+
+\section{Experimental Procedures}
+
+\begin{figure}
+\centerline{\includegraphics[width=3.5in]{Diffusion pumps.png}}
+\caption{A block diagram of two diffusion pumps, one a single stage diffusion pump and the other a multistage diffusion pump. Our pump was a multistage diffusion pump. The heater at the bottom boils the pump fluid, in our case a type of oil, and the resultant gas rises. It hits the nozzles and is directed back downwards. Air molecules from a chamber above randomly wander into the pump, and when they do, the downward momentum of the evaporated oil is imparted on them. The walls condense the oil when hit and the oil slides down to the bottom, where absorbed gas is driven out of the oil condensate at exits the pump through the foreline. Figure comes from page 66 of Ref. \cite{Mark}.} \label{Diffusion pumps}
+\end{figure}
+
+\begin{figure}
+\centerline{\includegraphics[width=3.5in]{Mechanical pumps.png}}
+\caption{A block diagram of two types of mechanical pumps. The type we used in our lab was not exactly the same as either model but was more similar to the model on the right. Mechanical pumps have a rotor inside that splits the interior of the pump into two parts. Air enters into one of the two volumes in the pump, is compressed, and forced through the exhaust. Some mechanical pumps have a layer of oil over a valve that maintains a better seal when closed. Figure comes from page 66 of Ref. \cite{Mark}.} \label{Mechanical pumps}
+\end{figure}
+
+Crucial for the understanding of the experimental procedures of this lab is the understanding of how diffusion pumps, mechanical pumps, and Pirani pressure gauges work.
+
+In a diffusion pump, a block diagram of which can be seen in Fig. \ref{Diffusion pumps}, gas molecules are moved from inlet to outlet via momentum transfer from directed streams of oil vapor \cite{Moore}. The oil is evaporated in a boiler at the bottom of the pump. The resulting vapor is directed up the pump to arrays of nozzles, which emit the vapor back downwards and outwards towards the pump walls.  Our diffusion pump was multistage, which can be seen on the right of Fig. \ref{Diffusion pumps}.
+
+The walls of the pump are cooled with cold water travelling through coils wrapped from the top to the bottom around the pump \cite{Moore}. This creates a temperature gradient where the top of the pump is cooled the most. This is necessary because at the top of the pump, the walls must effectively condense oil vapor, while at the bottom of the pump, the walls must drive absorbed gas out of the oil condensate (and therefore does not need to be as cold). The air molecules then exit the pump through the foreline exhaust.
+
+Diffusion pumps begin to fail when the inlet pressure is sufficiently high that the mean free path of the molecules being pumped is less than the distance from the vapor-jet nozzle to the wall \cite{Moore}. When this happens, the net downward momentum of the vapor molecules is lost and vapor diffuses upwards into the vacuum chamber. This occurs when the outlet pressure, or foreline pressure, rises above the critical backing pressure. This process is called stalling, and it contaminates the chamber with oil. To prevent the foreline pressure from rising too high, a mechanical backing pump is required, which lowers the foreline pressure of the diffusion pump. Diffusion pumps generally have a limit on the order of $10^{-6}$ or $10^{-7}$ Torr.
+
+Mechanical pumps have an off-centered rotor turning inside, which splits the interior of the pump into two volumes that compress and expand opposite one another \cite{Moore}. Gas from the pump inlet enters one of these volumes and is then compressed and forced through a valve to the exhaust. As the rotor turns, the same then happens in the other volume. Mechanical pumps have a limit of around $10^{-3}$ Torr.
+
+We used a Pirani gauge, which measures pressure using thermal-conductivity \cite{Moore}. Inside the gauge is a wire filament that is heated by an electric current. This filament constitutes one arm of a Wheatstone bridge, a type of circuit that measures an unknown resistivity. A change in temperature of the filament changes the resistivity, which is measured and used to find the pressure.
+
+
+\begin{figure}
+\centerline{\includegraphics[width=3.5in]{Front diagram.png}}
+\caption{A block diagram showing the front of our vacuum set up. Inside the bell jar, we put a vacuum chamber. That chamber was set over the hole to the diffusion pump and sealed with an o-ring. Other important features are the mechanical pump switching valve which switches the mechanical pump from being connected to the roughing line to the foreline of the diffusion pump and to an off position, as well as the high vacuum gate valve which, when opened, exposes the vacuum chamber to the diffusion pump. Also of note is the pirani gauge controller, which we connected to the lab computer to take measurements. Figure was taken from Ref. \cite{Cooke}.} \label{Front diagram}
+\end{figure}
+
+\begin{figure}
+\centerline{\includegraphics[width=3.5in]{Back diagram.png}}
+\caption{A block diagram showing the back of our vacuum set up. Of note are the roughing line and the diffusion pump foreline both connected to the mechanical pump, the oil diffusion pump, and the liquid nitrogen cold trap. Diagram taken from Ref. \cite{Cooke}} \label{Back diagram}
+\end{figure}
+
+Block diagrams of the front and back of our set up can be seen in Figs. \ref{Front diagram} and \ref{Back diagram}. The vacuum system has to be powered up before it can be used. This entails turning on the mechanical pump, or the roughing pump, and then turning the on the cooling water for the diffusion pump. After, liquid nitrogen can be poured into the cold trap, which removes condensable vapors from the system. 
+
+Then, the chamber is ready to be pumped down. The mechanical pump rough-pumps the chamber down to about 30 Torr. We do not need to pump down further with the mechanical pump because the hole in the chamber small enough that the pressure beneath the chamber is much lower than in the chamber. From there, we can switch to the diffusion pump and begin taking data. The pressure from the Pirani guage is recorded to the computer. We did 3 trials, starting slightly below 30 Torr, recording a value every 5 seconds for 400 seconds for our first two trials and 510 seconds for our final trial.
+
+
+
+\section{Discussion of Results}
+
+\begin{figure}
+\centerline{\includegraphics[width=5in]{Trial 3 full.png}}
+\caption{A graph of  $\ln({P(t) \over P_0})$ versus $t$ in seconds for Trial 3. 103 data points were taken, with 5 seconds in between each of them. Notable about the graph is that the data appears linear for about 80 seconds and then curves off towards a horizontal asymptote. Because we are plotting the natural log of the y-data, this means that for the first 80 seconds, pressure decreased exponentially. Beyond that, the change in pressure was not longer exponential and our model breaks down.} \label{Trial 3 full}
+\end{figure}
+
+\begin{figure}
+\centerline{\includegraphics[width=5in]{Trial 3 cut.png}}
+\caption{A graph of  $\ln({P(t) \over P_0})$ versus $t$ in seconds for Trial 3 cutting all data after 80 seconds. A line is fixed to (0, 0) and fit to the data. The slope of the line is $-0.0288 \pm 0.0001$ s$^{-1}$.} \label{Trial 3 cut}
+\end{figure}
+
+A plot of our full data from our third trial can be seen in Fig. \ref{Trial 3 full}. Of note, the graph starts off relatively linearly for the first 80 seconds, and then decreases non-linearly towards a horizontal asymptote. What this tells us is that for about the first 80 seconds, the pressure in the vacuum chamber was decreasing exponentially. However, after that time, the decrease in pressure was no longer exponential, with the change in pressure approaching zero. This signifies that the vacuum system was starting to reach its pumping limit and was unable to continue decrease the pressure at the same rate.
+
+Given that Eq. \eqref{to find speed} requires there to be a linear relationship on the graph, we cut our data after the graph appeared to no longer be linear and then fit a line fixed through the origin to the data. For all three trials we ran, this happened to occur after 80 seconds, leaving us with 17 data points. Fitting a line through the data gave us three values for the slope, which were $4820 \pm 160$ m/s, $5050 \pm 160$ m/s, and $5420 \pm 180$ m/s. We took a weighted average of the slope, using
+\begin{equation}
+    \langle x \rangle = {\sum {x_i \over {\delta_i}^2} \over \sum {1 \over {\delta_i}^2}} ,
+\end{equation}
+and,
+\begin{equation}
+    \delta \langle x \rangle = \sqrt{{1 \over \sum {1 \over {\delta_i}^2}}} .
+\end{equation}
+This gave us a value of $5072 \pm 96$ m/s.
+
+We can use the equation for the root mean square velocity of air molecules to find a value to compare our experimentally determined value with. The equation, from Ref. \cite{Halliday}, is,
+\begin{equation}
+    v_{rms} = \sqrt{{3 R T \over M}} .
+\end{equation}
+If we assume that $N_2$ is the only gas in our chamber and the room is close to room temperature, we can plus in values of $T = 295.4$ K, $M_{N_2} = 0.028014$ kg/mol, and $R = 8.3145$ J mol$^{-1}$ K$^{-1}$ to get $v_{rms} \simeq 513$ m/s.
+
+The value we obtained for the average speed of air molecules was a full order of magnitude higher than this estimate. There are a couple of types of error that could have potentially caused this. First, outgassing could have been a major problem. Outgassing is when gas that is trapped or stuck to materials in the chamber becomes unstuck. One of the biggest causes of this is oils found on our hands. For this reason, we tried to always wear gloves when touching anything that would go inside of the vacuum chamber. However, it is possible that if we were not careful enough, then we could have touched a part of the chamber, releasing extra gas we tried to pump the chamber down. Another problem could be that the assumptions we made to make our model were not very good or fair assumptions. For example, we assumed that air is completely $N_2$ when we calculated $v_{rms}$ as a number to compare to our value. This seems a little less likely, as it would mean that the basis of the experiment is flawed.
+
+Finally, it is worth mentioning that another group of undergraduate students that completed this equipment with the same equipment that we did had the same problem. They also found a value for the average speed of air molecules that was an order of magnitude above the expected. Therefore, there could be a problem with some piece of equipment we used in our vacuum set up. This would have led to both groups being unable to find an accurate value.
+
+
+\section{Conclusions}
+
+In conclusion, we used vacuum techniques to make a measurement of the average speed of air molecules. We used a diffusion pump to pump down a vacuum chamber with a small hole in the bottom and then plotted the natural log of pressure divided by initial pressure versus time. We fit a line to the first 80 seconds of the data taken where the data appeared to be linear on the graph and used the slope to calculate a value fo the average speed of air molecules. Our value was $5072 \pm 96$ m/s, which was a full order of magnitude higher than the number we calculated using the classical equipartation theory to compare with our number, which was about $509$ m/s. Possible sources of error that could have significantly affected our result are outgassing, incorrect assumptions, or faulty equipment. With this lab, it could be worth taking a look at completely cleaning all of the equipment to make sure outgassing is not a problem, as well as testing all individual pieces of equipment to make sure they are all working properly. Overall, despite the severely incorrect number we found for the average speed of air molecules, we learned much about the operation of vacuum systems in a physics laboratory, a useful skill for all physicists to have.
+
+
+\section{References}
+
+\begin{thebibliography}{99}
+\bibitem{Marquardt} Marquardt, Niels, (1999), ``Introduction to the Principles of Vacuum Physics", Institute for Accelerator Physics and Synchrotron Radiation, University of Dortmund, accessed online at: \url{https://cds.cern.ch/record/582156/files/p1.pdf}.
+\bibitem{Mark} Mark and Olson, \textit{Experiments in Modern Physics} (1969, Scientia, Bristol, England), chapter 4.
+\bibitem{PHYS lab} Vacuum System Techniques, PHYS 418 Laboratory Physics, Oberlin College, Fall 2023, Prof. Jason Stalnaker.
+\bibitem{Moore} Moore, John H., Davis, Christopher C., and Coplan, Michael A., \textit{Building Scientific Apparatus}, 4th edition, (2009, Cambirdge University Press, United Kingdom), chapter 3.
+\bibitem{Cooke} Description and Operating Instructions for the Cooke Vacuum Station, PHYS 418 Laboratory, Oberlin College, Fall 2023, Prof. Jason Stalnaker, originally writted by Prof. John Scofield.
+\bibitem{Halliday} Halliday, David, and Resnick, Robert, \textit{Fundamentals of Physics}, 10th edition, (2014, Wiley, United States of America), chapter 19.
+
+\end{thebibliography}
+
+\end{document} 

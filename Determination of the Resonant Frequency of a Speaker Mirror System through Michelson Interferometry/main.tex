@@ -1,0 +1,311 @@
+\documentclass[11pt,letterpaper]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %%                                   %%
+\setlength{\evensidemargin}{0in}  %%                                   %%
+\setlength{\textheight}{8.5in}    %%                                   %%
+\setlength{\topmargin}{0in}       %%                                   %%
+\setlength{\headheight}{0in}      %%                                   %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\newcommand{\required}[1]{\section*{\hfil #1\hfil}}                    %%
+\renewcommand{\refname}{\hfil References Cited\hfil}                   %%
+%\bibliographystyle{plain}                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%PUT YOUR MACROS HERE
+%\usepackage{multirow}
+\usepackage{amsmath}
+%\usepackage{calligra}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{fancyhdr}
+%\usepackage{longtable}
+%\usepackage{vmargin}
+%\usepackage{slashed}
+\usepackage{graphicx}
+%\usepackage{psfrag}
+%\usepackage{euscript}
+%\usepackage{slashbox}
+\usepackage{ulem}
+%\usepackage{wrapfig}
+%\usepackage{natbib}
+%\usepackage{floatfig}
+%\usepackage{subfigure}
+%\usepackage{palatino}
+%\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% These are user defined functions that make parentheses, brackets, etc. easier to type.
+
+
+\def\bra#1{{\left\langle#1\right\vert}}
+\def\prn#1{{\left(#1\right)}}
+\def\ket#1{{\left\vert#1\right\rangle}}
+\def\abs#1{{\left|#1\right|}}
+\def\brk#1{{\left[#1\right]}}
+
+\newcommand{\req}[1]{\section*{\hfil #1\hfil}}                    \renewcommand{\refname}{\hfil References Cited\hfil}
+
+\graphicspath{ {./images/} }
+
+\begin{document}
+
+\title{Determination of the Resonant Frequency of a Speaker-Mirror System through Michelson Interferometry}
+
+\author{Colvin Iorio}
+
+\date{October 12, 2023}
+\maketitle
+
+
+\begin{abstract}
+    We use Michelson Interferometry to determine the resonant frequency of a speaker-mirror system. A moving mirror in our Michelson Interferometer is attached to a sinusoidally oscillating speaker. We make a plot of oscillation amplitude of the speaker-mirror versus frequency of the driving wave generator, and fit the data to the equation for amplitude of a damped driven harmonic oscillator. With the generated coefficients, we calculate the speaker-mirror system's resonant frequency. We find the resonant frequency value to be $66.104 \pm 0.003$ Hz.
+\end{abstract}
+
+
+\section{Introduction}\label{sec intro}
+
+The interference of waves is an important concept for undergraduate physicists, and light interference can be studied using Michelson Interferometers. In this experiment, we use a Michelson Interferometer to make measurements of the displacement amplitude of a speaker driven by a sinusoidal wave generator. With these measurements we calculate the resonant frequency of the speaker-mirror system.
+
+In the late 1800s, physicists believe that light was a wave, and in order for light to propogate it must travel through a theorized medium called the ether \cite{Tretkoff}. Albert Michelson (1851 - 1931) invented a device called the Michelson Interferometer, where a beam of light would be split, bounce off mirrors, recombine, and create interference patterns. With this device, Michelson and colleague Edward Morley attempted to detect Earth's motion through the ether, given that the speed of light would differ depending on Earth's direction through the ether and therefore would produce difference interference patterns. Of course, they were unable to detect an ether, and Einstein's 1905 theory of special relativity introducing the invariate speed of light moved the field of physics away from the idea of an ether 
+\cite{Tretkoff}.
+
+Michelson Interferomters have continued improving since that time and now are one of the best ways to measure incredibly small displacements. For example, the LIGO detection of gravitational waves occurred using laser interferometry. LIGO detectors use hanging mirrors at the end of four kilometer long arms to detect ripples in space-time due to gravitational waves, and LIGO is able to detect a change in distance between its mirrors of 1/1000th of a proton's width \cite{LIGO}. This led to LIGOs 2017 detection of merging neutron stars.
+
+Interferometry has many uses outside of Michelson Interferometers, such as in the field of topography. One technique in topography is called synthetic aperture radar interferometery, where radar images taken by Earth-orbiting spacecraft from slightly different viewing directions allows for construction of elevation models with meter-scale accuracy \cite{Bürgmann}. A specific type of synthetic aperture radar interferomtry called persistent scatterer interferometry detects landslides in mountainous regions where more traditional landslide detection methods can take take significant time and resources \cite{Nefros}. This technique is crucial for fast response to road network damage.
+
+In this lab report, we will review the theory behind wave interference, as well as key concepts applicable to a Michelson Interferometer and our specific Michelson Interferometer setup. We will then go over our experimental procedure. Finally, we will discuss the results obtained for the resonant frequency of our speaker-mirror system and perform error analysis.
+
+
+\section{Theory}
+
+\subsection{Wave Interference}
+
+Key to understanding Michelson Interferometry is the understanding of wave interference. Following Ref. \cite{Halliday}, the displacement of two simultaneous waves when the waves overlap can be expressed as
+\begin{equation}
+    y'(x,t) = y_1(x,t) + y_2(x,t) . \label{wave superposition}
+\end{equation}
+We can write the equation for a single wave to be
+\begin{equation}
+    y_1(x,t) = A \cos(k x - \omega t) ,
+\end{equation}
+where $A$ is the amplitude, $k$ is the angular wave number, and $\omega$ is the angular frequency.
+Now following Ref. \cite{Fitzpatrick}, waves are frequently expressed in terms of complex numbers where
+\begin{equation}
+    \psi (x,t) = \psi _0 e^{i (kx-\omega t)} , \label{complex wave}
+\end{equation}
+and $\psi _0$ is a complex constant equalling
+\begin{equation}
+    \psi _0 = A e^{i \phi} .
+\end{equation}
+Eq. \eqref{complex wave} is therefore true because
+\begin{equation}
+    Re[\psi _0 e^{i (kx-\omega t)}] = A cos(kx - \omega t + \phi) .
+\end{equation}
+When writing a complex wave function, $\psi (x,t)$ is frequently written without taking the real part. 
+
+Now, suppose two waves of the same amplitude $A$ and frequency $\omega$ are emitted by coherent, in phase sources. One wave travels a distance $x_1$ and the other travels a distance of $x_2$ before both reach a common point P and are superimposed. Following Ref. \cite{Michelson}, we take Eq.\ \eqref{wave superposition} for the superimposing of waves and Eq.\ \eqref{complex wave} to express each of our light waves. The net wave can be expressed as
+\begin{align}
+    \psi = & A e^{i (k x_1 + \omega t)} + A e^{i (k x_2 + \omega t)} \\
+    = & A e^{-i \omega t} e^{i k ({x_1 + x_2 \over 2})} [e^{i k ({x_1 - x_2 \over 2})} + e^{-i k ({x_1 - x_2 \over 2})}] \\
+    = &2 A cos[k ({x_1 - x_2 \over 2})] e^{i [k ({x_1 + x_2 \over 2}) - \omega t]} .
+\end{align}
+For this resultant wave, wave number is $k = {2 \pi \over \lambda } = {\omega \over c}$, and the sum of the wave's amplitude is everything in front of the exponential. We can therefore rewrite the sum of the amplitude in terms of wavelength
+\begin{equation}
+    A_{sum} = 2 A cos[\pi ({x_1 - x_2 \over \lambda})] .
+\end{equation}
+The time averaged intensity $I$ is proportional to the square of the amplitude and can be written as
+\begin{equation}
+    I \propto cos^2 [\pi ({x_1 - x_2 \over \lambda})] .
+\end{equation}
+
+\subsection{Key concepts for a Michelson Interferometer}
+
+\begin{figure}
+\centerline{\includegraphics[width=4in]{ex setup.png}}
+\caption{Example layout of a Michelson Interferometer, showing the path length difference of the two beams. Light is emitted from the source S and travels to the beam splitter (BS). Half the light then takes path 1 to mirror 1 (M1) and back to the beam splitter. The other half takes path 2 to mirror 2 (M2) before returning to the beam splitter. At the beam splitter the light recombines and travels to the observer (O). Diagram comes from Ref. \cite{Michelson}.} \label{ex setup}
+\end{figure}
+
+A Michelson Interferometer uses the above concepts by establishing a path difference with a beam splitter. The first path travels from the source to the beam splitter, then to a mirror, back to the beam splitter, and finally to a detector. The second path diverges from the first at the beam splitter, instead travelling to a second mirror before returning to the beam splitter and recombining with the first path. Following Ref. \cite{Michelson} and taking the path lengths as labeled in Fig. \ref{ex setup}, the two paths' overall distances can be described as
+\begin{equation}
+    x_1 = L_4 + 2 L_1 + L_4 ,
+\end{equation}
+and
+\begin{equation}
+    x_1 = L_4 + 2 L_2 + L_4 .
+\end{equation}
+We can now write the path difference as
+\begin{equation}
+    x_1 - x_2 = 2L_1 - 2L_2 .
+\end{equation}
+
+In our Michelson Interferometer, the position of one of the mirrors can be varied so shorten or lengthen the distance of one path. If we take $L_1$ to be the adjustable length and $L_2$ to be the fixed length, we can then right the intensity of light as seen at the observer as
+\begin{align}
+    I \propto & \: cos^2 [2 \pi ( {L_1 - L_2 \over \lambda } ) ] \\
+    \propto & \: cos^2 [2 \pi {L_1 \over \lambda } - \theta] .
+\end{align}
+Specifically, our moving mirror oscillates harmonically. We can express this movement in terms of $L_1$ with
+\begin{equation}
+    L_1 = L_0 + B sin(\omega t),
+\end{equation}
+where $\omega$ is the frequency, $B$ is the displacement, and $L_0$ is the initial length. Then, we can rewrite the intensity detected as
+\begin{equation}
+    I = A^2 cos^2 [2\pi {B sin(\omega t) \over \lambda } - \theta '] .
+\end{equation}
+
+
+\subsection{Driven Oscillators and Resonant Frequency}
+
+Following Ref. \cite{Taylor}, in the case that the driving force $f(t)$ that moves our mirror is a sinusoidal function of time, then
+\begin{equation}
+    f(t) = f_0 cos(\omega t) ,
+\end{equation}
+where $f_0$ denotes the driving force amplitude divided by the oscillator mass and $\omega$ is the angular frequency of the driving force. The equation of motion of this driven damped harmonic oscillator is given by
+\begin{equation}
+    \Ddot{x} + 2 \beta \Dot{x} + {\omega _0}^2 x = f_0 cos(\omega t) . \label{cos eq}
+\end{equation}
+ The trick to solving this differential equation is that there must be a solution of the same equation except cosine is replaced with sine,
+\begin{equation}
+    \Ddot{y} + 2 \beta \Dot{y} + {\omega _0}^2 y = f_0 sin(\omega t) . \label{sin eq}
+\end{equation}
+Now, we can define the complex function
+\begin{equation}
+    z(t) = x(t) + i y(t) .
+\end{equation}
+Following this complex function, we multiply Eq. \eqref{sin eq} by $i$ and add it to Eq. \eqref{cos eq} to get
+\begin{equation}
+    \Ddot{z} + 2 \beta \Dot{z} + {\omega _0}^2 z = f_0 e^{i \omega t} . \label{plugged in}
+\end{equation}
+When we find a solution to this equation, we only have to take the real part to find the solution to Eq. \eqref{cos eq}.
+
+Checking if there is a solution to Eq. \eqref{plugged in} of the form
+\begin{equation}
+    z(t) = Ce^{i \omega t} , \label{guess}
+\end{equation}
+where C is an undetermined constant leads us to
+\begin{equation}
+    (-\omega ^2 + 2 i \beta \omega + {\omega _0}^2) C e^{i \omega t} = f_) e^{i \omega t} . 
+\end{equation}
+Eq. \eqref{guess} is a solution to Eq. \eqref{plugged in} if and only if
+\begin{equation}
+    C = {f_0 \over {\omega _0}^2 - \omega ^2 + 2 i \beta \omega} .
+\end{equation}
+We can now take the real part of $C$ to find the solution $A$ to Eq. \eqref{cos eq}, which is
+\begin{align}
+    A^2 = & CC^* \\
+    = & {f_0 \over {\omega _0}^2 - \omega ^2 + 2 i \beta \omega} \times {f_0 \over {\omega _0}^2 - \omega ^2 - 2 i \beta \omega} \\
+    = & {f_0^2 \over ({\omega _0}^2 - \omega ^2)^2 + 4 \beta ^2 \omega ^2}
+\end{align}
+\begin{equation}
+    A = {f_0 \over \sqrt{({\omega _0}^2 - \omega ^2)^2 + 4 \beta ^2 \omega ^2}} , \label{Amplitude}
+\end{equation}
+which is the amplitude of oscillations of our damped driven harmonic oscillator.
+
+The resonant frequency of this system occurs when the amplitude is largest, which we can solve to be when
+\begin{equation}
+    \omega _r = \sqrt{{\omega _0}^2 - 2 \beta ^2} . \label{resonant freq}
+\end{equation}
+
+
+\section{Experimental Procedures}
+
+\begin{figure}
+\centerline{\includegraphics[width=4in]{Picture of Michelson Interferometer.png}}
+\caption{Picture of our Michelson Interferometer setup. A is the optical table. B is the He-Ne laser. C is the beam splitter. D is the speaker-mirror system, and E is the stationary mirror. F is the photometer. G is the wave generator, which is connected to H, a 1000 $\Omega$ resistor, before connecting to the speaker. I is the oscilloscope.} \label{setup picture}
+\end{figure}
+
+The set up for this lab took place on a floated optical table, a picture of which can be seen in Fig. \ref{setup picture}. The table has bags of compressed air in the legs which isolate the table top from vibrations in the floor \cite{Michelson}. This is crucial to the experiment because the system is extremely sensitive to movement, and the interference patterns can disappear when the table is shaken. 
+
+Our Michelson Interferometer consisted of an He-Ne laser, a beam splitter, a stationary mirror, a speaker-mirror system connected to a wave generator and a resistor, and a photometer. The He-Ne laser generates light at a wavelength of 632.8 nm \cite{Telford}. The photometer converts electromagnetic waves to a voltage readout. 
+
+The speaker consists of a moving cone cemented to a cylindrical coil in its center. The coil lies in a magnetic field, and thus alternating current through the coil caused the speaker cone to vibrate \cite{Freschi}. The mirror was attached to the front of the speaker. The speaker was connected to a wave generator, and a 1000 $\Omega$ resistor was between. The wave generator was set to sinusoidal oscillation. The resistor wired between the wave generator and the speaker was there to fine tune the control on the amplitude of the signal generator.
+
+The photometer and wave generator are connected to channels one and two respectively of our oscilloscope, where we make our readings. The wave generator is connected a second time to the oscilloscope to the trigger port. This allows us to take snapshots at specific time intervals, with $t=0$ being the point where the oscilloscope triggers due to the wave generator's output voltage amplitude being over a threshold.
+
+We took data at two different wave generator output voltage amplitude levels, 160 mV peak-to-peak and 600 mV peak-to-peak. For both of these values, we recorded twelve different snapshots. Both sets of snapshots started around 47 Hz on the wave generator frequency and incremented by about 3 Hz, up to just under 80 Hz. The oscilloscope was connected to the lab computer, and we used Labview to record these snapshots. Examples can be seen in Fig. \ref{Sample readouts}. With each snapshot, we counted the number of wavelengths between turn-around points in the photometer voltage readings.
+
+
+\section{Discussion of Results}
+
+\begin{figure}[hp]
+    \centering
+    \begin{subfigure}[b]{0.55\textwidth}
+        \includegraphics[width=\textwidth]{47.png}
+        \label{fig:subfigA}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.55\textwidth}
+        \includegraphics[width=\textwidth]{64.png}
+        \label{fig:subfigB}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.55\textwidth}
+        \includegraphics[width=\textwidth]{78.png}
+        \label{fig:subfigB}
+    \end{subfigure}
+    \caption{Three sample oscilloscope readouts, where the yellow line is the photometer voltage and the blue line is the wave generator voltage. The top figure was taken with the wave generator frequency at $47.24 \pm 0.01$ Hz and has $1.65 \pm 0.25 \lambda$'s. The middle figure was taken with the wave generator frequency at $64.80 \pm 0.01$ Hz and has $5.95 \pm 0.25 \lambda$'s. The bottom figure was taken with the wave generator frequency at $78.02 \pm 0.01$ Hz and has $1.65 \pm 0.25 \lambda$'s. All three figures were made with the wave generator amplitude at 160 mV peak-to-peak.}
+    \label{Sample readouts}
+\end{figure}
+
+\begin{figure}[hp]
+    \centering
+    %\begin{subfigure}[b]{0.7\textwidth}
+        \includegraphics[width=5in]{160mV.png}
+        %\label{fig:subfigA}
+    %\end{subfigure}
+    %\begin{subfigure}[b]{0.7\textwidth}
+    %    \includegraphics[width=\textwidth]{600mv.png}
+    %    \label{fig:subfigB}
+    %\end{subfigure}
+    \caption{Plot of speaker amplitude in nm versus wave generator frequency in Hz with wave generator amplitude set to 160 mV peak-to-peak. For each data point, speaker amplitude was measured by taking a screenshot of oscilloscope data at a certain frequency to a computer, counting the number of peaks between turn-around points to get the number of wavelengths, and multiplying the number of wavelengths by 632.8 nm. The equation fit to the data is Eq. \eqref{Amplitude}. For data taken at 160 mV wave generator amplitude, coefficients were $\omega _0 = 66.03 \pm 0.23$, $f_0 = (2.25 \pm 0.10) \times 10^6$ and $\beta = 4.53 \pm 0.32$, and $\chi ^2 = 6.07$. For data taken at 600 mV wave generator amplitude (not pictured), coefficients were $\omega _0 = 66.424 \pm 0.062$, $f_0 = (8.91 \pm 0.10) \times 10^6$ and $\beta = 4.357 \pm 0.068$, and $\chi ^2 = 20.43$.}
+    \label{Sample readouts}
+\end{figure}
+
+For both sets of data taken at 160 mV and 600 mV, we determined the error in wave generator frequency to be $\delta \omega _{wavegen} = 0.01$ Hz based on natural fluctuation of the equipment and error in wavelengths counted to be $\delta \lambda _{counts} = 0.25 \lambda$ based on human error in counting the number of wavelengths. We multiplied the number of wavelengths counted by 632.8 nm, the wavelength of light emitted by our He-Ne laser and plotted wave generator frequency versus amplitude of speaker-mirror oscillation. We fit Eq. \eqref{Amplitude} to these data. For the 160 mV data, $w_0 = 66.03 \pm 0.24$ Hz and $\beta = 4.53 \pm 0.32$. Plugging this in to Eq. \eqref{resonant freq}, we got $65.7 \pm 0.2$ Hz, where the error was found using
+\begin{align}
+    \delta \omega _r = & \sqrt{ ({\delta \omega _r \over \delta \omega _0} \delta \omega _0 ) ^2 + ({\delta \omega _r \over \delta \beta} \delta \beta )^2} \\
+    = & \sqrt{ {{\omega _0}^2 \delta {\omega _0}^2 + 4 \beta ^2 \delta \beta ^2 \over {\omega _0}^2 - 2 \beta ^2}} .
+\end{align}
+For the 600 mV data, $\omega_0 = 66.424 \pm 0.062$ Hz and $\beta = 4.357 \pm 0.068$. Plugging these values in, we found a resonant frequency of $\omega _r = 66.14 \pm 0.06$ Hz. 
+
+With these two values for the resonant frequency of the speaker-mirror system, we then did a weighted average, using equations
+\begin{equation}
+    \langle x \rangle = {\sum {x_i \over {\delta_i}^2} \over \sum {1 \over {\delta_i}^2}} 
+\end{equation}
+\begin{equation}
+    \delta \langle x \rangle = \sqrt{{1 \over \sum {1 \over {\delta_i}^2}}} .
+\end{equation}
+We found $\langle \omega _r \rangle = 66.104 \pm 0.003$ Hz.
+
+We compared this value to two other values of the resonant frequency that we made using more simplistic techniques. For one of these measurements, we looked for the frequency at which the wave generator maximums and minimums were $90^{\circ}$ out of phase with the photometer's `turn-around points', where peaks were not reached. This technique finds the resonant frequency because at these points, the driver is applying its maximum force when the oscillation has stopped. With this technique, we found $\omega _r = 65.5 \pm 0.3$ Hz. The second measurement was made by looking at frequency at which the maximum number of peaks in the photometer signal occur. This technique works because at the resonant frequency, the amplitude of the speaker-mirror system is at its maximum. With this technique, we found $\omega _r = 67.5 \pm 2.0$ Hz. Our value for $\langle \omega _r \rangle$ falls right outside of two standard deviations for the first technique and within a standard deviation of the second.
+
+Of note about our data sets gathered at 160 mV and 600 mV were the $\Tilde{\chi} ^2$'s and the errors in parameters of our fits. Both data sets had 12 degrees of freedom, but for the 160 mV data $\chi ^2 = 6.07$ and for the 600 mV data $\chi ^2 = 20.43$. This led to values of $\Tilde{\chi ^2} = .507$ and $\Tilde{\chi ^2} = 1.703$, respectively. However, for the 160 mV data, $\delta \omega _0 = 0.24$, while for the 600 mV data, $\delta \omega _0 = 0.062$. So, despite a higher $\Tilde{\chi ^2}$, there error on parameters was lower for the 600 mV data. This is likely due to our error not scaling with the length of the amplitude. Because we kept our error in number of wavelengths constant, the percent error for the 600 mV data was much lower, make the data simultaneously fit the equation less accurately and have parameters with less error.
+
+
+\section{Conclusions}
+
+In conclusion, we measured the resonant frequency of a speaker-mirror system using a Michelson Interferometer. With our wave generator output amplitude at 160 mV peak-to-peak and 600 mV peak-to-peak, we took 12 snapshots at intervals of about 3 Hz and counted the number of wavelengths between turn-around points in the photometer reading. We then multiplied this by the wavelength of light emitted by our laser, plotted amplitude of speaker-mirror oscillation versus wave generator frequency, and fit the equation for amplitude of damped driven harmonic oscillators to this equation. We used the values of the coefficients of these fits to find values for the resonant frequency, taking a weighted average to find our final value of $66.104 \pm 0.003$ Hz. Overall, in this lab we learned much about wave interference, as well as Michelson Interferometers. 
+
+
+\section{References}
+
+\begin{thebibliography}{99}
+\bibitem{Tretkoff} Tretkoff, E., 2007, \textit{This Month in Physics Histroy Novemeber 1887: Michelson and Morley report their failure to detect the luminiferous ether}, APS News 16, accessed online, \url{://www.aps.org/publications/apsnews/200711/physicshistory.cfm}.
+\bibitem{LIGO} LIGO Caltech, (n. d.), ``About- Facts," LIGO, \url{https://www.ligo.caltech.edu/page/facts}.
+\bibitem{Bürgmann} Bürgmann, R., Rosen, P., Fielding, E., Annual Review of Earth and Planetary Sciences \textbf{28}, 169-209, (2000).
+\bibitem{Nefros} Nefros, C., et. al., Remote Sens. 15, 1550, (2023).
+\bibitem{Halliday} Halliday, D., amd Resnick, R., \textit{Fundamentals of Physics}, (2014, Quad Graphics, United States of America), section 16.5.
+\bibitem{Fitzpatrick} Fitzpatrick, R., \textit{Quantum Mechanics}, (2010, University of Texas at Austin), section 2.3, accessed online through LibreTexts Physics.
+\bibitem{Michelson} Michelson Interferometer, PHYS 418 Laboratory Physics, Oberlin College, Fall 2023, Prof. Jason Stalnaker.
+\bibitem{Taylor} Taylor, J., \textit{Classical Mechanics}, (2005, University Science Books, United States of America), section 5.5.
+\bibitem{Telford} Telford, W., Methods in Cell Biology, (2011), accessed online at \url{https://www.sciencedirect.com/topics/biochemistry-genetics-and-molecular-biology/helium-neon-laser#:~:text=The\%20wavelength\%20of\%20the\%20He,vitalising\%20effects\%20on\%20living\%20tissue}.
+\bibitem{Freschi} Freschi, A., et. al., Am. J. Phys. \textbf{71} (11), (2003).
+
+\end{thebibliography}
+
+\end{document} 
